@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450">
+  <defs>
+    <linearGradient id="sg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1a0a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="ga3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#16a34a" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#16a34a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="700" height="450" fill="url(#sg3)"/>
+  <rect width="700" height="450" fill="url(#ga3)"/>
+  <g stroke="#16a34a" stroke-opacity="0.07" stroke-width="1">
+    <line x1="0" y1="112" x2="700" y2="112"/>
+    <line x1="0" y1="225" x2="700" y2="225"/>
+    <line x1="0" y1="337" x2="700" y2="337"/>
+    <line x1="175" y1="0" x2="175" y2="450"/>
+    <line x1="350" y1="0" x2="350" y2="450"/>
+    <line x1="525" y1="0" x2="525" y2="450"/>
+  </g>
+  <circle cx="350" cy="200" r="120" fill="#16a34a" fill-opacity="0.06" stroke="#16a34a" stroke-opacity="0.12" stroke-width="2"/>
+  <circle cx="350" cy="200" r="75" fill="#16a34a" fill-opacity="0.08" stroke="#16a34a" stroke-opacity="0.18" stroke-width="1.5"/>
+  <circle cx="350" cy="200" r="35" fill="#16a34a" fill-opacity="0.2"/>
+  <text x="350" y="215" text-anchor="middle" font-family="Arial" font-size="32" fill="#16a34a" opacity="0.7">●</text>
+  <text x="350" y="360" text-anchor="middle" font-family="Arial" font-size="14" fill="rgba(255,255,255,0.25)" letter-spacing="4">INSTRUMENTACIÓN</text>
+  <text x="350" y="385" text-anchor="middle" font-family="Arial" font-size="11" fill="rgba(255,255,255,0.1)" letter-spacing="3">CRISAMEX</text>
+</svg>

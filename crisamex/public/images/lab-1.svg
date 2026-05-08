@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="lb1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#0d1f35"/>
+      <stop offset="100%" stop-color="#1a0608"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="60%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#C8151B" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#C8151B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#lb1)"/>
+  <rect width="900" height="600" fill="url(#glow1)"/>
+  <!-- Lab floor -->
+  <rect x="0" y="440" width="900" height="160" fill="rgba(0,0,0,0.4)"/>
+  <!-- Lab bench -->
+  <rect x="40" y="380" width="820" height="65" fill="rgba(20,30,50,0.8)" rx="4"/>
+  <rect x="40" y="375" width="820" height="12" fill="rgba(40,60,90,0.9)" rx="2"/>
+  <!-- Microscope -->
+  <rect x="100" y="220" width="14" height="155" fill="rgba(180,190,210,0.6)"/>
+  <rect x="78" y="215" width="58" height="16" rx="4" fill="rgba(180,190,210,0.7)"/>
+  <rect x="90" y="370" width="36" height="12" fill="rgba(120,140,170,0.6)"/>
+  <ellipse cx="109" cy="225" rx="20" ry="8" fill="rgba(200,21,27,0.4)"/>
+  <!-- Monitor 1 -->
+  <rect x="220" y="240" width="200" height="135" rx="6" fill="rgba(10,20,40,0.9)" stroke="rgba(200,21,27,0.5)" stroke-width="2"/>
+  <rect x="228" y="248" width="184" height="110" fill="rgba(5,15,35,0.95)"/>
+  <!-- Monitor content - waveform -->
+  <polyline points="236,303 252,285 268,310 284,272 300,315 316,280 332,308 348,275 364,305 380,278 396,303" fill="none" stroke="rgba(200,21,27,0.8)" stroke-width="2"/>
+  <line x1="228" y1="318" x2="412" y2="318" stroke="rgba(200,21,27,0.2)" stroke-width="1"/>
+  <rect x="290" y="378" width="80" height="6" fill="rgba(180,190,210,0.4)" rx="3"/>
+  <!-- Monitor 2 -->
+  <rect x="460" y="245" width="170" height="125" rx="5" fill="rgba(10,20,40,0.9)" stroke="rgba(100,140,200,0.4)" stroke-width="1.5"/>
+  <rect x="468" y="252" width="154" height="95" fill="rgba(5,15,35,0.95)"/>
+  <!-- Monitor 2 content - circular gauge -->
+  <circle cx="545" cy="300" r="35" fill="none" stroke="rgba(100,140,200,0.2)" stroke-width="8"/>
+  <path d="M545,265 A35,35 0 1,1 510,300" fill="none" stroke="rgba(200,21,27,0.7)" stroke-width="8" stroke-linecap="round"/>
+  <text x="545" y="305" text-anchor="middle" font-family="monospace" font-size="14" fill="rgba(200,21,27,0.9)">87%</text>
+  <!-- Radiation detector -->
+  <rect x="680" y="260" width="80" height="110" rx="8" fill="rgba(30,40,60,0.8)" stroke="rgba(200,21,27,0.3)" stroke-width="1.5"/>
+  <circle cx="720" cy="295" r="22" fill="rgba(200,21,27,0.08)" stroke="rgba(200,21,27,0.4)" stroke-width="1.5"/>
+  <text x="720" y="300" text-anchor="middle" font-family="Arial" font-size="20" fill="rgba(200,21,27,0.5)">☢</text>
+  <rect x="695" y="330" width="50" height="6" rx="3" fill="rgba(200,21,27,0.3)"/>
+  <rect x="695" y="342" width="35" height="4" rx="2" fill="rgba(100,140,200,0.3)"/>
+  <rect x="695" y="352" width="45" height="4" rx="2" fill="rgba(200,21,27,0.2)"/>
+  <!-- Flasks -->
+  <ellipse cx="820" cy="362" rx="18" ry="8" fill="rgba(100,200,255,0.15)" stroke="rgba(100,200,255,0.3)" stroke-width="1"/>
+  <rect x="813" y="300" width="14" height="62" fill="rgba(100,200,255,0.08)" stroke="rgba(100,200,255,0.25)" stroke-width="1"/>
+  <ellipse cx="820" cy="300" rx="12" ry="5" fill="rgba(100,200,255,0.2)"/>
+  <ellipse cx="860" cy="365" rx="15" ry="6" fill="rgba(200,100,255,0.12)" stroke="rgba(200,100,255,0.25)" stroke-width="1"/>
+  <rect x="854" y="308" width="12" height="57" fill="rgba(200,100,255,0.06)" stroke="rgba(200,100,255,0.2)" stroke-width="1"/>
+  <!-- Ambient glow effects -->
+  <circle cx="545" cy="300" r="80" fill="rgba(100,140,200,0.03)"/>
+  <circle cx="720" cy="295" r="50" fill="rgba(200,21,27,0.04)"/>
+  <!-- Label -->
+  <text x="450" y="555" text-anchor="middle" font-family="Arial" font-size="13" fill="rgba(255,255,255,0.12)" letter-spacing="6">LABORATORIO DE PROTECCIÓN RADIOLÓGICA</text>
+</svg>

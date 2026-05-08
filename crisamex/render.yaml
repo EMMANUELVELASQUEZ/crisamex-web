@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: crisamex-web
+    env: docker
+    dockerfilePath: ./docker/Dockerfile.render
+    plan: free
+    region: ohio
+    envVars:
+      - key: DB_HOST
+        sync: false
+      - key: DB_NAME
+        value: crisamex_db
+      - key: DB_USER
+        sync: false
+      - key: DB_PASS
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: APP_SECRET
+        generateValue: true
+      - key: MAIL_DRIVER
+        value: smtp
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: "587"
+      - key: MAIL_USER
+        sync: false
+      - key: MAIL_PASS
+        sync: false
+      - key: MAIL_FROM_EMAIL
+        sync: false
+      - key: MAIL_FROM_NAME
+        value: CRISAMEX
