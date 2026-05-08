@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 900">
+  <defs>
+    <radialGradient id="h1" cx="60%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a0508"/>
+      <stop offset="60%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <radialGradient id="h2" cx="75%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#C8151B" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8151B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1800" height="900" fill="url(#h1)"/>
+  <rect width="1800" height="900" fill="url(#h2)"/>
+  <!-- Grid lines -->
+  <g stroke="rgba(200,21,27,0.07)" stroke-width="1">
+    <line x1="360" y1="0" x2="360" y2="900"/>
+    <line x1="720" y1="0" x2="720" y2="900"/>
+    <line x1="1080" y1="0" x2="1080" y2="900"/>
+    <line x1="1440" y1="0" x2="1440" y2="900"/>
+    <line x1="0" y1="225" x2="1800" y2="225"/>
+    <line x1="0" y1="450" x2="1800" y2="450"/>
+    <line x1="0" y1="675" x2="1800" y2="675"/>
+  </g>
+  <!-- Atom symbol -->
+  <g transform="translate(1350,430)" fill="none" stroke="rgba(200,21,27,0.09)" stroke-width="1.5">
+    <ellipse rx="220" ry="75" transform="rotate(-35)"/>
+    <ellipse rx="220" ry="75" transform="rotate(35)"/>
+    <ellipse rx="220" ry="75"/>
+    <circle r="22" fill="rgba(200,21,27,0.12)" stroke="rgba(200,21,27,0.25)" stroke-width="2"/>
+  </g>
+  <!-- Particles -->
+  <g fill="rgba(200,21,27,0.35)">
+    <circle cx="180" cy="120" r="2.5"/><circle cx="420" cy="280" r="2"/>
+    <circle cx="680" cy="90" r="2.5"/><circle cx="950" cy="320" r="2"/>
+    <circle cx="1180" cy="140" r="2.5"/><circle cx="1620" cy="580" r="2"/>
+    <circle cx="90" cy="680" r="2"/><circle cx="530" cy="780" r="2.5"/>
+    <circle cx="810" cy="520" r="2"/><circle cx="1480" cy="380" r="2.5"/>
+  </g>
+  <g fill="rgba(255,255,255,0.08)">
+    <circle cx="300" cy="380" r="2"/><circle cx="650" cy="560" r="2.5"/>
+    <circle cx="880" cy="720" r="2"/><circle cx="1250" cy="200" r="2.5"/>
+    <circle cx="1580" cy="760" r="2"/><circle cx="1720" cy="340" r="2"/>
+  </g>
+</svg>

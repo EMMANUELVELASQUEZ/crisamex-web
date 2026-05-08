@@ -1,0 +1,31 @@
+# Seguridad — NUNCA subir esto
+.env
+.env.*
+!.env.example
+logs/
+*.log
+
+# Uploads de usuarios
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Dependencias
+vendor/
+node_modules/
+
+# Cache y temporales
+*.cache
+*.tmp
+*.bak
+*.old
+*.swp
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+
+# Docker local
+docker-compose.override.yml

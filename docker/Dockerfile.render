@@ -1,0 +1,49 @@
+FROM php:8.2-apache
+
+# Instalar extensiones
+RUN apt-get update && apt-get install -y \
+    libpng-dev libjpeg-dev libwebp-dev libzip-dev libcurl4-openssl-dev \
+    zip unzip curl openssl \
+    && docker-php-ext-configure gd --with-jpeg --with-webp \
+    && docker-php-ext-install pdo pdo_mysql mysqli gd zip curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Módulos Apache de seguridad
+RUN a2enmod rewrite headers expires deflate
+
+# Config Apache segura
+COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
+
+WORKDIR /var/www/html
+COPY . .
+
+# Carpetas necesarias
+RUN mkdir -p public/uploads logs src/helpers
+
+# Permisos seguros
+RUN chown -R www-data:www-data /var/www/html \
+    && find /var/www/html -type f -exec chmod 644 {} \; \
+    && find /var/www/html -type d -exec chmod 755 {} \; \
+    && chmod -R 775 /var/www/html/public/uploads \
+    && chmod -R 775 /var/www/html/logs \
+    && chmod 640 /var/www/html/.env 2>/dev/null || true
+
+# PHP seguridad producción
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
+    && echo "upload_max_filesize = 10M"        >> /usr/local/etc/php/php.ini \
+    && echo "post_max_size = 12M"              >> /usr/local/etc/php/php.ini \
+    && echo "max_execution_time = 60"          >> /usr/local/etc/php/php.ini \
+    && echo "display_errors = Off"             >> /usr/local/etc/php/php.ini \
+    && echo "log_errors = On"                  >> /usr/local/etc/php/php.ini \
+    && echo "error_log = /var/www/html/logs/php_error.log" >> /usr/local/etc/php/php.ini \
+    && echo "expose_php = Off"                 >> /usr/local/etc/php/php.ini \
+    && echo "allow_url_fopen = Off"            >> /usr/local/etc/php/php.ini \
+    && echo "allow_url_include = Off"          >> /usr/local/etc/php/php.ini \
+    && echo "session.cookie_httponly = 1"      >> /usr/local/etc/php/php.ini \
+    && echo "session.cookie_samesite = Strict" >> /usr/local/etc/php/php.ini \
+    && echo "session.use_strict_mode = 1"      >> /usr/local/etc/php/php.ini \
+    && echo "session.gc_maxlifetime = 3600"    >> /usr/local/etc/php/php.ini \
+    && echo "file_uploads = On"                >> /usr/local/etc/php/php.ini
+
+EXPOSE 80
+CMD ["apache2-foreground"]

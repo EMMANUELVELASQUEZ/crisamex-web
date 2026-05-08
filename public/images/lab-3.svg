@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620">
+  <defs>
+    <linearGradient id="lb3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1a"/>
+      <stop offset="50%" stop-color="#0f1825"/>
+      <stop offset="100%" stop-color="#150608"/>
+    </linearGradient>
+    <radialGradient id="gl3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C8151B" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#C8151B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#lb3)"/>
+  <rect width="900" height="620" fill="url(#gl3)"/>
+  <!-- Grid floor -->
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <line x1="0" y1="520" x2="900" y2="520"/>
+    <line x1="0" y1="420" x2="900" y2="420"/>
+    <line x1="150" y1="420" x2="150" y2="620"/>
+    <line x1="300" y1="420" x2="300" y2="620"/>
+    <line x1="450" y1="420" x2="450" y2="620"/>
+    <line x1="600" y1="420" x2="600" y2="620"/>
+    <line x1="750" y1="420" x2="750" y2="620"/>
+  </g>
+  <!-- Large centrifuge/equipment -->
+  <ellipse cx="180" cy="370" rx="80" ry="90" fill="rgba(20,35,60,0.8)" stroke="rgba(200,21,27,0.2)" stroke-width="2"/>
+  <ellipse cx="180" cy="360" rx="60" ry="70" fill="rgba(15,25,45,0.9)" stroke="rgba(100,140,200,0.15)" stroke-width="1"/>
+  <ellipse cx="180" cy="355" rx="35" ry="42" fill="rgba(10,18,32,0.95)"/>
+  <line x1="180" y1="313" x2="180" y2="397" stroke="rgba(200,21,27,0.4)" stroke-width="2"/>
+  <line x1="138" y1="355" x2="222" y2="355" stroke="rgba(200,21,27,0.4)" stroke-width="2"/>
+  <circle cx="180" cy="355" r="8" fill="rgba(200,21,27,0.6)"/>
+  <!-- Glove box / containment -->
+  <rect x="320" y="200" width="280" height="200" rx="8" fill="rgba(15,25,45,0.75)" stroke="rgba(100,160,220,0.3)" stroke-width="2"/>
+  <rect x="330" y="210" width="260" height="180" rx="4" fill="rgba(8,15,30,0.6)"/>
+  <!-- Glove ports -->
+  <circle cx="375" cy="350" r="28" fill="rgba(20,35,60,0.8)" stroke="rgba(100,160,220,0.3)" stroke-width="1.5"/>
+  <circle cx="375" cy="350" r="20" fill="rgba(15,25,45,0.9)" stroke="rgba(100,160,220,0.2)" stroke-width="1"/>
+  <circle cx="545" cy="350" r="28" fill="rgba(20,35,60,0.8)" stroke="rgba(100,160,220,0.3)" stroke-width="1.5"/>
+  <circle cx="545" cy="350" r="20" fill="rgba(15,25,45,0.9)" stroke="rgba(100,160,220,0.2)" stroke-width="1"/>
+  <!-- Sample inside glove box -->
+  <rect x="420" y="260" width="60" height="80" rx="4" fill="rgba(200,21,27,0.1)" stroke="rgba(200,21,27,0.35)" stroke-width="1.5"/>
+  <text x="450" y="305" text-anchor="middle" font-family="Arial" font-size="18" fill="rgba(200,21,27,0.4)">☢</text>
+  <!-- Radiation warning sign -->
+  <circle cx="450" cy="305" r="40" fill="none" stroke="rgba(200,21,27,0.08)" stroke-width="1"/>
+  <!-- Control panel right -->
+  <rect x="680" y="180" width="180" height="260" rx="6" fill="rgba(12,20,38,0.9)" stroke="rgba(200,21,27,0.2)" stroke-width="1.5"/>
+  <rect x="692" y="196" width="156" height="50" rx="4" fill="rgba(5,10,20,0.95)"/>
+  <text x="770" y="215" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(200,21,27,0.7)">CRISAMEX</text>
+  <text x="770" y="232" text-anchor="middle" font-family="monospace" font-size="14" fill="rgba(200,21,27,0.9)">0.024</text>
+  <text x="770" y="244" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(200,21,27,0.5)">mSv/h</text>
+  <!-- Buttons panel -->
+  <circle cx="712" cy="272" r="10" fill="rgba(34,197,94,0.3)" stroke="rgba(34,197,94,0.5)" stroke-width="1.5"/>
+  <circle cx="712" cy="272" r="6" fill="rgba(34,197,94,0.6)"/>
+  <circle cx="745" cy="272" r="10" fill="rgba(200,21,27,0.2)" stroke="rgba(200,21,27,0.4)" stroke-width="1.5"/>
+  <circle cx="778" cy="272" r="10" fill="rgba(234,179,8,0.2)" stroke="rgba(234,179,8,0.4)" stroke-width="1.5"/>
+  <rect x="692" y="298" width="156" height="6" rx="3" fill="rgba(100,140,200,0.2)"/>
+  <rect x="692" y="312" width="120" height="4" rx="2" fill="rgba(200,21,27,0.25)"/>
+  <rect x="692" y="324" width="140" height="4" rx="2" fill="rgba(100,140,200,0.15)"/>
+  <rect x="692" y="336" width="100" height="4" rx="2" fill="rgba(200,21,27,0.2)"/>
+  <!-- ISO cert plaque -->
+  <rect x="692" y="360" width="156" height="65" rx="4" fill="rgba(200,180,0,0.06)" stroke="rgba(200,180,0,0.2)" stroke-width="1"/>
+  <text x="770" y="382" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="rgba(200,180,0,0.7)">ISO 9001:2008</text>
+  <text x="770" y="398" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(200,180,0,0.5)">CERTIFICADO</text>
+  <text x="770" y="416" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(200,180,0,0.4)">CNSNS • STPS • COFEPRIS</text>
+  <!-- Ambient glow -->
+  <circle cx="450" cy="300" r="120" fill="rgba(100,140,200,0.04)"/>
+  <text x="450" y="595" text-anchor="middle" font-family="Arial" font-size="11" fill="rgba(255,255,255,0.08)" letter-spacing="5">CRISAMEX — CONTROL DE RADIACIONES E INGENIERÍA</text>
+</svg>
