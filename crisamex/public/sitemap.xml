@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://crisamex-web-production.up.railway.app/</loc>
+    <loc>https://crisamex-web-production.up.railway.app/\</loc\>
     <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://crisamex-web-production.up.railway.app/quienes-somos</loc>
+    <loc>https://crisamex-web-production.up.railway.app/quienes-somos\</loc\>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://crisamex-web-production.up.railway.app/servicios</loc>
+    <loc>https://crisamex-web-production.up.railway.app/servicios\</loc\>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://crisamex-web-production.up.railway.app/certificaciones</loc>
+    <loc>https://crisamex-web-production.up.railway.app/certificaciones\</loc\>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://crisamex-web-production.up.railway.app/planes</loc>
+    <loc>https://crisamex-web-production.up.railway.app/planes\</loc\>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://crisamex-web-production.up.railway.app/contacto</loc>
+    <loc>https://crisamex-web-production.up.railway.app/contacto\</loc\>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>
-# SEO Sun May 10 17:19:40 CST 2026
