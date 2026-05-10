@@ -1,5 +1,7 @@
 FROM debian:bookworm-slim
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y \
     apache2 \
     php8.2 \
@@ -9,24 +11,27 @@ RUN apt-get update && apt-get install -y \
     php8.2-curl \
     php8.2-mbstring \
     libapache2-mod-php8.2 \
-    && rm -rf /var/lib/apt/lists/* \
-    && a2enmod rewrite headers php8.2
+    && rm -rf /var/lib/apt/lists/*
+
+RUN a2enmod rewrite headers php8.2
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-RUN cat > /etc/apache2/sites-available/000-default.conf << 'APACHEEOF'
+RUN bash -c 'cat > /etc/apache2/sites-available/000-default.conf << '\''APACHEEOF'\''
 <VirtualHost *:80>
     ServerAdmin contacto@crisamex.com
     DocumentRoot /var/www/html/public
+
     <Directory /var/www/html/public>
         Options -Indexes +FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
+
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-APACHEEOF
+APACHEEOF'
 
 WORKDIR /var/www/html
 COPY . .
@@ -36,14 +41,8 @@ RUN mkdir -p public/uploads logs \
     && chmod -R 755 /var/www/html \
     && chmod -R 775 /var/www/html/public/uploads
 
+RUN echo "display_errors = On" >> /etc/php/8.2/apache2/php.ini \
+    && echo "error_reporting = E_ALL" >> /etc/php/8.2/apache2/php.ini
+
 EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
-# Mostrar errores PHP para debug
-RUN echo "display_errors = On" >> /etc/php/8.2/apache2/php.ini \
-    && echo "error_reporting = E_ALL" >> /etc/php/8.2/apache2/php.ini \
-    && echo "log_errors = On" >> /etc/php/8.2/apache2/php.ini
-
-RUN a2enmod rewrite
-
-RUN echo '<Directory /var/www/html/public>\n    AllowOverride All\n    Options -Indexes +FollowSymLinks\n    Require all granted\n</Directory>' >> /etc/apache2/apache2.conf
