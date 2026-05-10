@@ -9,20 +9,32 @@ RUN apt-get update && apt-get install -y \
     php8.2-curl \
     php8.2-mbstring \
     libapache2-mod-php8.2 \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && a2enmod rewrite headers php8.2
 
-RUN a2enmod rewrite headers php8.2 && \
-    echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
+RUN cat > /etc/apache2/sites-available/000-default.conf << 'APACHEEOF'
+<VirtualHost *:80>
+    ServerAdmin contacto@crisamex.com
+    DocumentRoot /var/www/html/public
+    <Directory /var/www/html/public>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+APACHEEOF
 
 WORKDIR /var/www/html
 COPY . .
 
-RUN mkdir -p public/uploads logs && \
-    chown -R www-data:www-data /var/www/html && \
-    chmod -R 755 /var/www/html && \
-    chmod -R 775 /var/www/html/public/uploads
+RUN mkdir -p public/uploads logs \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html \
+    && chmod -R 775 /var/www/html/public/uploads
 
 EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
