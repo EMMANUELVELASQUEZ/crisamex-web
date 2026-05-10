@@ -1,18 +1,13 @@
 FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
-    libpng-dev libjpeg-dev libwebp-dev libzip-dev \
+    libpng-dev libjpeg-dev libzip-dev \
     zip unzip curl \
-    && docker-php-ext-configure gd --with-jpeg --with-webp \
+    && docker-php-ext-configure gd \
     && docker-php-ext-install pdo pdo_mysql mysqli gd zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN a2dismod mpm_event || true \
-    && a2dismod mpm_worker || true \
-    && a2dismod mpm_prefork || true \
-    && a2enmod mpm_prefork \
-    && a2enmod rewrite headers \
-    && echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN a2enmod rewrite headers
 
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 
@@ -26,9 +21,8 @@ RUN mkdir -p public/uploads logs \
 
 RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
     && echo "upload_max_filesize = 10M" >> /usr/local/etc/php/php.ini \
-    && echo "post_max_size = 12M" >> /usr/local/etc/php/php.ini \
     && echo "display_errors = Off" >> /usr/local/etc/php/php.ini \
     && echo "log_errors = On" >> /usr/local/etc/php/php.ini
 
 EXPOSE 80
-CMD ["apache2-foreground"]
+CMD ["bash", "-c", "a2dismod mpm_event mpm_worker 2>/dev/null; a2enmod mpm_prefork 2>/dev/null; apache2-foreground"]
