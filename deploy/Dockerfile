@@ -38,3 +38,8 @@ RUN mkdir -p public/uploads logs \
 
 EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+# Mostrar errores PHP para debug
+RUN echo "display_errors = On" >> /etc/php/8.2/apache2/php.ini \
+    && echo "error_reporting = E_ALL" >> /etc/php/8.2/apache2/php.ini \
+    && echo "log_errors = On" >> /etc/php/8.2/apache2/php.ini
