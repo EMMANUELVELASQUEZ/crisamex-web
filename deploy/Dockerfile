@@ -45,3 +45,5 @@ RUN echo "display_errors = On" >> /etc/php/8.2/apache2/php.ini \
     && echo "log_errors = On" >> /etc/php/8.2/apache2/php.ini
 
 RUN a2enmod rewrite
+
+RUN echo '<Directory /var/www/html/public>\n    AllowOverride All\n    Options -Indexes +FollowSymLinks\n    Require all granted\n</Directory>' >> /etc/apache2/apache2.conf
