@@ -1,5 +1,4 @@
 <?php
-// Leer .env
 $envFile = dirname(__DIR__, 2) . '/.env';
 if (file_exists($envFile)) {
     foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
@@ -33,16 +32,11 @@ class Database {
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES   => false,
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
             );
             try {
                 self::$instance = new PDO($dsn, DB_USER, DB_PASS, $options);
             } catch (PDOException $e) {
-                if (APP_ENV === 'development') {
-                    die("Error de conexion: " . $e->getMessage());
-                } else {
-                    die("Error de conexion. Contacte al administrador.");
-                }
+                die("Error de conexion: " . $e->getMessage());
             }
         }
         return self::$instance;
@@ -69,7 +63,6 @@ class Database {
     }
 }
 
-// Cargar helpers
 $mailerFile = dirname(__FILE__) . '/../helpers/mailer.php';
 if (file_exists($mailerFile)) {
     require_once $mailerFile;
