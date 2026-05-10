@@ -7,7 +7,11 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql mysqli gd zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN a2enmod rewrite headers
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.conf \
+    && rm -f /etc/apache2/mods-enabled/mpm_*.load \
+    && ln -s /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf \
+    && ln -s /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load \
+    && a2enmod rewrite headers
 
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 
@@ -25,4 +29,4 @@ RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
     && echo "log_errors = On" >> /usr/local/etc/php/php.ini
 
 EXPOSE 80
-CMD ["bash", "-c", "a2dismod mpm_event mpm_worker 2>/dev/null; a2enmod mpm_prefork 2>/dev/null; apache2-foreground"]
+CMD ["apache2-foreground"]
