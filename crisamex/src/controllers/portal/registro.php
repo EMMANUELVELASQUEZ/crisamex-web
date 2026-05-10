@@ -43,7 +43,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       $_SESSION['cliente_empresa'] = $cliente['empresa'];
       $_SESSION['cliente_plan']    = $cliente['plan_nombre'] ?? 'Trial';
       $_SESSION['cliente_status']  = 'trial';
-      header('Location: /portal?bienvenido=1'); exit;
+      // Enviar email de bienvenida al cliente
+$plan_nombre_email = $cliente['plan_nombre'] ?? 'Trial';
+Mailer::bienvenida($email, $nombre, $empresa, $plan_nombre_email);
+
+// Notificar al admin
+$admin = Database::fetchOne("SELECT email FROM admin_usuarios WHERE activo=1 LIMIT 1");
+if($admin) Mailer::avisoAdminNuevoRegistro($admin['email'], $nombre, $empresa, $email, $plan_nombre_email);
+
+header('Location: /portal?bienvenido=1'); exit;
     }
   }
 }
@@ -159,7 +167,8 @@ textarea.fc{min-height:90px;resize:vertical;padding-top:11px}
 .security-note span{font-size:.76rem;color:#15803d;font-weight:500}
 
 @media(max-width:900px){
-  .page{grid-template-columns:1fr}
+  body{display:block!important}
+  .page{grid-template-columns:1fr!important;display:block!important}
   .sidebar{position:relative;height:auto;padding-bottom:8px}
   .main-inner{padding:28px 24px}
   .row2{grid-template-columns:1fr}

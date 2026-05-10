@@ -10,7 +10,15 @@ $curUri = $_SERVER['REQUEST_URI'];
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CRISAMEX">
+<meta name="application-name" content="CRISAMEX">
+<meta name="msapplication-TileColor" content="#C8151B">
+<meta name="theme-color" content="#C8151B" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
 <title><?= htmlspecialchars($pageTitle) ?></title>
 <meta name="description"  content="<?= htmlspecialchars($pageDesc) ?>">
 <meta name="keywords"     content="<?= htmlspecialchars($pageKeywords) ?>">

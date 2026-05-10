@@ -333,12 +333,39 @@ footer{background:#1a1a1a;border-top:3px solid var(--r)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* ── RESPONSIVE ── */
+/* ================================================================
+   RESPONSIVE COMPLETO — iPhone 16 Pro Max, Android, Tablet
+   Diseño profesional tipo Apple/Nike/Stripe
+   ================================================================ */
+
+/* ── RESET MÓVIL GLOBAL ── */
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── TABLET 1100px ── */
 @media(max-width:1100px){
-  .qs-grid,.split-grid,.cnt-grid{grid-template-columns:1fr;gap:48px}
-  .split-img{height:400px}
-  .split-cnt{padding:60px 40px}
+  .qs-grid{grid-template-columns:1fr;gap:40px}
+  .split-grid{grid-template-columns:1fr}
+  .split-img{height:380px}
   .split-ov{background:linear-gradient(to bottom,transparent 60%,#fff)}
-  .fg-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .split-cnt{padding:48px 32px}
+  .cnt-grid{grid-template-columns:1fr;gap:40px}
+  .fg-grid{grid-template-columns:1fr 1fr;gap:28px}
   .val-grid{grid-template-columns:repeat(2,1fr)}
   .mv-grid{grid-template-columns:1fr;gap:2px}
   .cert-grid{grid-template-columns:repeat(3,1fr)}
@@ -347,29 +374,358 @@ footer{background:#1a1a1a;border-top:3px solid var(--r)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .qs-sm{display:none}
 }
+
+/* ── MÓVIL 768px ── */
 @media(max-width:768px){
+
+  /* Contenedor — padding lateral correcto */
+  .container{padding:0 20px;max-width:100%}
+  
+  /* Secciones */
+  .sp{padding:56px 0}
+  .sp-sm{padding:36px 0}
+
+  /* ── TOPBAR — ocultar en móvil ── */
+  .topbar{display:none}
+  
+  /* ── NAVBAR MÓVIL ── */
+  #nav{top:0;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+  .nav-i{height:60px;padding:0 20px}
+  .nav-logo-img{height:42px}
   .nav-links,.nav-cta-wrap{display:none}
   .nav-ham{display:flex}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:#fff;padding:100px 28px 40px;z-index:999;gap:0;overflow-y:auto;border-top:3px solid var(--r)}
-  .nav-links.open a{font-family:var(--disp);font-size:2.2rem;padding:16px 0;letter-spacing:3px;border-bottom:1px solid var(--bd);color:#222}
+  
+  /* Menú móvil fullscreen */
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:fixed;inset:0;top:0;
+    background:#fff;
+    padding:80px 24px 40px;
+    z-index:998;gap:0;
+    overflow-y:auto;
+    border-top:3px solid var(--r);
+  }
+  .nav-links.open li{width:100%}
+  .nav-links.open a{
+    display:block;
+    font-family:var(--disp);
+    font-size:1.9rem;
+    padding:14px 0;
+    letter-spacing:2px;
+    border-bottom:1px solid #f0f0f0;
+    color:#1a1a1a;
+    width:100%;
+  }
   .nav-links.open a:hover{color:var(--r)}
-  .topbar{display:none}
-  #nav{top:0}
-  .float-bar{right:12px;bottom:80px}
-  .f-btn{width:42px!important;height:42px!important;font-size:.9rem}
-  .f-btn::before{display:none}
-  .srv-grid,.val-grid,.cert-grid{grid-template-columns:1fr}
+  
+  /* Botones en menú móvil */
+  .nav-links.open + .nav-cta-wrap{
+    display:flex;flex-direction:column;gap:10px;
+    position:fixed;bottom:32px;left:24px;right:24px;z-index:999;
+  }
+
+  /* ── HERO MÓVIL ── */
+  .hero{
+    min-height:100svh;
+    min-height:100vh;
+    padding:0;
+  }
+  .hero-content{
+    padding:88px 0 60px;
+    max-width:100%;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,11vw,4rem);
+    letter-spacing:1px;
+    line-height:.92;
+    margin-bottom:12px;
+  }
+  .hero-desc{
+    font-size:.92rem;
+    line-height:1.75;
+    margin-bottom:28px;
+    max-width:100%;
+  }
+  .hero-btns{
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:40px;
+  }
+  .hero-btns .btn{
+    width:100%;
+    justify-content:center;
+    padding:15px 20px;
+    font-size:.95rem;
+  }
+  .hero-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,.12);
+  }
+  .hs{
+    padding:0;margin:0;border:none;
+  }
+  .hs-n{font-size:2.8rem}
+  .hs-l{font-size:.58rem;letter-spacing:2px}
+  .hero-scroll{display:none}
+  .hero-vline{display:none}
+  .hero-deco-num{display:none}
+
+  /* ── QUIÉNES SOMOS MÓVIL ── */
+  .qs-grid{grid-template-columns:1fr;gap:32px}
+  .rv-l,.rv-r{transform:none;opacity:1}
+  .qs-imgs{padding:0 0 30px}
+  .qs-main{height:260px!important;width:100%}
+  .qs-badge{
+    top:-12px;left:-8px;
+    padding:12px 14px;
+  }
+  .qs-badge strong{font-size:2rem}
+  .qs-badge span{font-size:.55rem}
+  .qs-sm{display:none}
+  .qs-bar{display:none}
+
+  /* ── SERVICIOS MÓVIL ── */
+  .srv-grid{grid-template-columns:1fr;background:none;gap:16px}
+  .srv-card{border:1px solid #e8e8e8}
+  .srv-card-img{height:200px}
+  .srv-body{padding:20px 18px}
+  .srv-ico{width:46px;height:46px;font-size:1.1rem;margin-top:-30px}
+  .srv-card h3{font-size:1.2rem}
+
+  /* ── ESTADÍSTICAS MÓVIL ── */
   .stats-grid{grid-template-columns:1fr 1fr}
-  .fg-grid{grid-template-columns:1fr}
+  .st-blk{padding:28px 16px}
+  .st-num{font-size:2.8rem}
+  .st-lbl{font-size:.58rem}
+  .st-ico{font-size:1.4rem}
+
+  /* ── COMPROMISO SPLIT MÓVIL ── */
+  .split-grid{grid-template-columns:1fr}
+  .split-img{height:240px;order:1}
+  .split-ov{background:linear-gradient(to bottom,transparent 50%,#fff)}
+  .split-cnt{
+    order:2;
+    padding:36px 20px;
+  }
+  .split-cnt::before{display:none}
+  .split-float{
+    bottom:12px;left:12px;right:12px;
+    padding:12px 14px;
+  }
+  .comp-cards{grid-template-columns:1fr;gap:10px}
+  .cc{padding:14px}
+
+  /* ── MISIÓN VISIÓN MÓVIL ── */
+  .mv-grid{grid-template-columns:1fr;gap:12px}
+  .mv-c{padding:28px 20px}
+  .mv-bg{font-size:4rem;right:12px}
+  .mv-ico{width:48px;height:48px;font-size:1.2rem;margin-bottom:16px}
+  .mv-c h3{font-size:1.6rem}
+  .mv-c p{font-size:.85rem}
+
+  /* ── VALORES MÓVIL ── */
+  .val-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .val-c{padding:22px 14px}
+  .val-ico{width:48px;height:48px;font-size:1.1rem}
+  .val-c h3{font-size:1rem}
+  .val-c p{font-size:.78rem}
+
+  /* ── EQUIPO MÓVIL ── */
+  .eq-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .eq-img{height:150px}
+  .eq-info{padding:12px 10px}
+  .eq-info h3{font-size:.82rem;margin-bottom:2px}
+  .eq-puesto{font-size:.6rem;margin-bottom:6px}
+  .eq-info p{font-size:.72rem;line-height:1.5}
+
+  /* ── CERTIFICACIONES MÓVIL ── */
+  .cert-grid{grid-template-columns:1fr 1fr;gap:2px;background:#e8e8e8}
+  .cert-c{padding:24px 14px}
+  .cert-ico{width:54px;height:54px;font-size:1.4rem}
+  .cert-c h3{font-size:.88rem}
+  .cert-c p{font-size:.7rem}
+
+  /* ── CONTACTO MÓVIL ── */
+  .cnt-grid{grid-template-columns:1fr;gap:28px}
+  .form-box{padding:24px 18px}
+  .cnt-item{gap:12px;margin-bottom:20px}
+  .cnt-ico{width:40px;height:40px;font-size:.85rem;flex-shrink:0}
   .fr2{grid-template-columns:1fr}
-  .hero-stats{flex-wrap:wrap}
-  .hs{padding:0 24px 0 0;margin-right:24px}
-  .comp-cards{grid-template-columns:1fr}
-  .eq-grid{grid-template-columns:1fr 1fr}
+
+  /* ── CTA MÓVIL ── */
+  .cta-s{padding:56px 0}
+  .cta-btns{
+    flex-direction:column;
+    gap:12px;
+    align-items:stretch;
+    max-width:320px;
+    margin:0 auto;
+  }
+  .cta-btns .btn{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* ── TÍTULOS MÓVIL ── */
+  .h1{font-size:clamp(2.4rem,9vw,3.5rem);letter-spacing:1px}
+  .h2{font-size:clamp(1.9rem,7.5vw,2.8rem);letter-spacing:1px}
+  .sub{font-size:.88rem;padding:0 8px}
+  .label{font-size:.62rem;letter-spacing:3px}
+
+  /* ── PAGE HEADER MÓVIL ── */
+  .ph{padding:120px 0 56px}
+  .ph h1{font-size:clamp(2.4rem,9vw,3.5rem)}
+  .ph p{font-size:.88rem;padding:0 8px}
+
+  /* ── FOOTER MÓVIL ── */
+  .footer-top{padding:48px 0 32px}
+  .fg-grid{grid-template-columns:1fr;gap:24px}
+  .ft-logo-wrap{margin-bottom:14px}
+  .ft-logo-wrap img{height:36px}
+  .ft-about{font-size:.82rem}
+  .ft-col h4{margin-bottom:12px}
+  .ft-links li{margin-bottom:8px}
+  .ft-links a{font-size:.82rem}
+  .fc-item{font-size:.82rem;margin-bottom:10px}
+  .ft-bot{padding:14px 0}
+  .ft-bot-i{
+    flex-direction:column;
+    gap:8px;
+    text-align:center;
+    font-size:.72rem;
+  }
+
+  /* ── BOTONES FLOTANTES MÓVIL ── */
+  .float-bar{
+    right:12px;
+    bottom:max(72px, calc(env(safe-area-inset-bottom) + 60px));
+    gap:8px;
+  }
+  .f-btn{
+    width:44px!important;height:44px!important;
+    font-size:.9rem;
+    box-shadow:0 3px 12px rgba(0,0,0,.22);
+  }
+  .f-btn::before{display:none}
+  .scroll-top-btn{
+    right:12px;
+    bottom:max(24px, calc(env(safe-area-inset-bottom) + 16px));
+    width:40px;height:40px;font-size:.85rem;
+  }
+
+  /* ── CHECK LIST MÓVIL ── */
+  .check-list li{font-size:.85rem;gap:10px;padding:10px 0}
+  .ck{width:20px;height:20px;font-size:.5rem;flex-shrink:0}
+
+  /* ── FORMULARIOS MÓVIL ── */
+  .fc{padding:12px 14px;font-size:16px!important}
+  .fg label{font-size:.68rem}
+  .btn{padding:13px 20px;font-size:.88rem}
+
+  /* ── ADMIN/PORTAL MÓVIL ── */
+  .adm-main{margin-left:0}
+  .sb{display:none}
+  .st-row{grid-template-columns:1fr 1fr;gap:10px}
+  .st-card{padding:14px 12px}
+  .st-n{font-size:1.3rem}
+  .st-l{font-size:.6rem}
+  .adm-content{padding:16px}
+  .adm-top h1{font-size:.85rem}
+
+  /* ── PORTAL REGISTRO MÓVIL ── */
+  .page{grid-template-columns:1fr!important}
+  .sidebar{
+    position:relative!important;
+    height:auto!important;
+    padding-bottom:0!important;
+  }
+  .sb-header{padding:20px}
+  .sb-plans{padding:16px}
+  .main-inner{padding:24px 20px!important}
+
+  /* ── COMUNICACIONES MÓVIL ── */
+  .layout{
+    grid-template-columns:1fr!important;
+    height:auto!important;
+  }
+  .col-clients{height:280px}
+  .col-info{display:none}
+
+  /* ── PLANES MÓVIL ── */
+  .planes-grid{grid-template-columns:1fr!important;gap:16px}
+  
+  /* ── OVERFLOW FIX ── */
+  section, .container, div{
+    max-width:100%;
+    overflow-x:hidden;
+  }
 }
-@media(max-width:480px){
-  .sp{padding:70px 0}
-  .hero-btns,.cta-btns{flex-direction:column;align-items:stretch}
-  .btn{width:100%;justify-content:center}
-  .eq-grid,.cert-grid{grid-template-columns:1fr}
+
+/* ── MÓVIL PEQUEÑO iPhone SE / Galaxy A ── */
+@media(max-width:390px){
+  .container{padding:0 16px}
+  .hero h1{font-size:2.4rem}
+  .val-grid{grid-template-columns:1fr}
+  .eq-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+}
+
+/* ── iPhone 16 Pro Max (430px) específico ── */
+@media(min-width:391px) and (max-width:430px){
+  .val-grid{grid-template-columns:1fr 1fr}
+  .eq-grid{grid-template-columns:1fr 1fr}
+  .cert-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ── SAFE AREA iOS (Notch / Dynamic Island) ── */
+@supports(padding:max(0px)){
+  .hero-content{
+    padding-top:max(88px, calc(env(safe-area-inset-top) + 76px));
+    padding-left:max(0px, env(safe-area-inset-left));
+    padding-right:max(0px, env(safe-area-inset-right));
+  }
+  #nav{
+    padding-left:max(0px, env(safe-area-inset-left));
+    padding-right:max(0px, env(safe-area-inset-right));
+  }
+  .float-bar{
+    right:max(12px, calc(env(safe-area-inset-right) + 8px));
+    bottom:max(72px, calc(env(safe-area-inset-bottom) + 60px));
+  }
+  .scroll-top-btn{
+    right:max(12px, calc(env(safe-area-inset-right) + 8px));
+    bottom:max(24px, calc(env(safe-area-inset-bottom) + 16px));
+  }
+  .nav-links.open{
+    padding-top:max(80px, calc(env(safe-area-inset-top) + 70px));
+    padding-bottom:max(40px, calc(env(safe-area-inset-bottom) + 20px));
+  }
+}
+
+/* ── INPUTS iOS — prevenir zoom automático ── */
+@media(max-width:768px){
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="search"],
+  textarea,
+  select{
+    font-size:16px!important;
+    -webkit-appearance:none;
+    border-radius:0;
+  }
+  /* Scroll suave iOS */
+  .nav-links.open,
+  .cc-list,
+  .chat-msgs,
+  .ci-body,
+  .adm-content{
+    -webkit-overflow-scrolling:touch;
+  }
 }
