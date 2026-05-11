@@ -3,14 +3,19 @@ $pageTitle='Servicios — CRISAMEX | Seguridad Radiológica';
 $pageDesc='Servicios especializados: asesoría radiológica, trámites CNSNS/STPS/COFEPRIS, instrumentación nuclear, capacitación y más.';
 $servicios=Database::fetchAll("SELECT * FROM servicios WHERE activo=1 ORDER BY orden");
 require_once SRC_PATH.'/views/partials/header.php';
+
+// Imágenes confiables de Picsum + keywords específicos por servicio
 $imgs=[
-  'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=900&q=85&fit=crop',
-  'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=85&fit=crop',
-  'https://images.unsplash.com/photo-1578496781197-b85385c46895?w=900&q=85&fit=crop',
-  'https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=900&q=85&fit=crop',
-  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=85&fit=crop',
-  'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=900&q=85&fit=crop',
+  'https://images.unsplash.com/photo-1581093577421-f561a654a353?w=900&q=80&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1581093577421-f561a654a353?w=900&q=80&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&q=80&fit=crop&auto=format',
 ];
+
+// Colores de placeholder por si falla la imagen
+$colors=['#1a1a2e','#16213e','#0f3460','#1b1b2f','#2c3e50','#1a1a2e'];
 ?>
 
 <section class="ph">
@@ -26,6 +31,7 @@ $imgs=[
   $even = $i%2===0;
   $img  = $imgs[$i%count($imgs)];
   $bg   = $even ? '#fff' : '#f8f8f8';
+  $col  = $colors[$i%count($colors)];
 ?>
 <section id="<?=htmlspecialchars($s['slug'])?>"
   style="padding:90px 0;background:<?=$bg?>;border-bottom:1px solid #e8e8e8;">
@@ -34,16 +40,23 @@ $imgs=[
 
       <!-- IMAGEN -->
       <div style="<?=!$even?'order:2':''?>">
-        <div style="position:relative;overflow:hidden;height:420px;box-shadow:0 8px 40px rgba(0,0,0,.1);">
+        <div style="position:relative;overflow:hidden;height:420px;box-shadow:0 8px 40px rgba(0,0,0,.12);background:<?=$col?>;">
           <img src="<?=$img?>"
                alt="<?=htmlspecialchars($s['titulo'])?>"
-               style="width:100%;height:100%;object-fit:cover;display:block;">
-          <!-- Overlay rojo sutil -->
-          <div style="position:absolute;inset:0;background:rgba(200,21,27,.06);"></div>
+               loading="lazy"
+               style="width:100%;height:100%;object-fit:cover;display:block;"
+               onerror="this.style.display='none';this.parentElement.querySelector('.img-fallback').style.display='flex'">
+          <!-- Fallback si Unsplash no carga -->
+          <div class="img-fallback" style="display:none;position:absolute;inset:0;background:<?=$col?>;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+            <i class="<?=htmlspecialchars($s['icono'])?>" style="font-size:4rem;color:rgba(255,255,255,.3);"></i>
+            <span style="color:rgba(255,255,255,.4);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;"><?=htmlspecialchars($s['titulo'])?></span>
+          </div>
+          <!-- Overlay -->
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,.15);"></div>
           <!-- Número decorativo -->
-          <div style="position:absolute;bottom:16px;right:20px;font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(255,255,255,.15);line-height:1;letter-spacing:2px;">0<?=$i+1?></div>
+          <div style="position:absolute;bottom:16px;right:20px;font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(255,255,255,.12);line-height:1;letter-spacing:2px;pointer-events:none;">0<?=$i+1?></div>
           <!-- Ícono flotante -->
-          <div style="position:absolute;top:24px;left:24px;width:56px;height:56px;background:#C8151B;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;box-shadow:0 4px 20px rgba(200,21,27,.4);">
+          <div style="position:absolute;top:24px;left:24px;width:56px;height:56px;background:#C8151B;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;box-shadow:0 4px 20px rgba(200,21,27,.5);">
             <i class="<?=htmlspecialchars($s['icono'])?>"></i>
           </div>
         </div>

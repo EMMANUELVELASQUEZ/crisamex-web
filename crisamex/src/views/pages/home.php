@@ -108,9 +108,9 @@
     </div>
     <?php
     $srvImgs=[
-      'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=700&q=80&fit=crop',
+      'https://images.unsplash.com/photo-1581093577421-f561a654a353?w=700&q=80&fit=crop&auto=format',
       'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700&q=80&fit=crop',
-      'https://images.unsplash.com/photo-1578496781197-b85385c46895?w=700&q=80&fit=crop',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80&fit=crop&auto=format',
       'https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80&fit=crop',
       'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80&fit=crop',
       'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=700&q=80&fit=crop',
