@@ -2,6 +2,7 @@
 
 <!-- Banner principal -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=C8151B&height=200&section=header&text=CRISAMEX&fontSize=80&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Control%20de%20Radiaciones%20e%20Ingeniería%20S.A.%20de%20C.V.&descAlignY=60&descSize=18" width="100%"/>
+<img width="270" height="69" alt="Captura de pantalla 2026-05-26 a la(s) 4 16 45 p m" src="https://github.com/user-attachments/assets/18743593-9b80-415d-b6c9-3988f773ad82" />
 
 <!-- Badges principales -->
 <p>
@@ -48,6 +49,7 @@
 ║         Seguridad Radiológica • Desde 1999                  ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
+<img width="1512" height="822" alt="Captura de pantalla 2026-05-26 a la(s) 7 54 15 a m" src="https://github.com/user-attachments/assets/21a24cc9-5f13-46bc-8b41-50697458cec3" />
 
 </div>
 
@@ -503,7 +505,7 @@ MAIL_PORT=587
 **Emmanuel Velásquez Gerón**
 
 [![GitHub](https://img.shields.io/badge/GitHub-EMMANUELVELASQUEZ-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EMMANUELVELASQUEZ)
-[![Email](https://img.shields.io/badge/Email-isc.emilio95%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:isc.emilio95@gmail.com)
+[![Email](https://img.shields.io/badge/Email-isc.emilio95%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](emmanuelvelasquez729@gmail.com)
 
 ![Licenciado en TI](https://img.shields.io/badge/Licenciado%20en%20TI-Organizaciones-003087?style=flat-square)
 ![Ingeniero DS](https://img.shields.io/badge/Ingeniero-Desarrollo%20de%20Software-C8151B?style=flat-square)
