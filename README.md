@@ -1,240 +1,133 @@
-<!-- ============================================================
-     CRISAMEX — README ÉPICO v4.0
-     Diseño: Cyberpunk Dark + Red Neon
-     ============================================================ -->
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=C8151B&height=180&section=header&text=CRISAMEX&fontSize=80&fontColor=FFFFFF&animation=fadeIn&fontAlignY=45&desc=Control+de+Radiaciones+e+Ingenieria+S.A.+de+C.V.&descSize=18&descColor=FFCCCC&descAlignY=68"/>
+
+<br/>
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3500&pause=800&color=C8151B&center=true&vCenter=true&width=550&lines=Seguridad+Radiologica+%F0%9F%94%AC;PHP+8.2+%2B+MySQL+8+%2B+Docker+%F0%9F%90%B3;Enterprise+Security+%F0%9F%94%92;CI%2FCD+con+Railway+%F0%9F%9A%80;25%2B+Anos+de+Experiencia+%F0%9F%8F%86)](https://crisamex-web-production.up.railway.app/)
+
+<br/>
+
+[![LIVE](https://img.shields.io/badge/%E2%96%B6%20LIVE-EN%20PRODUCCION-00C853?style=for-the-badge&labelColor=0D1117)](https://crisamex-web-production.up.railway.app/)
+[![Commits](https://img.shields.io/github/last-commit/EMMANUELVELASQUEZ/crisamex-web?style=for-the-badge&label=ULTIMO%20COMMIT&color=C8151B&labelColor=0D1117)](https://github.com/EMMANUELVELASQUEZ/crisamex-web)
+[![Top Lang](https://img.shields.io/github/languages/top/EMMANUELVELASQUEZ/crisamex-web?style=for-the-badge&color=777BB4&labelColor=0D1117)](https://github.com/EMMANUELVELASQUEZ/crisamex-web)
+[![Size](https://img.shields.io/github/repo-size/EMMANUELVELASQUEZ/crisamex-web?style=for-the-badge&color=0057B7&labelColor=0D1117)](https://github.com/EMMANUELVELASQUEZ/crisamex-web)
+
+<br/>
+
+[![Sitio Web](https://img.shields.io/badge/%F0%9F%8C%90%20SITIO%20WEB-Ver%20en%20vivo-C8151B?style=for-the-badge&labelColor=1A1A1A)](https://crisamex-web-production.up.railway.app/)
+[![Servicios](https://img.shields.io/badge/%F0%9F%93%8B%20SERVICIOS-Radiologicos-003087?style=for-the-badge&labelColor=1A1A1A)](https://crisamex-web-production.up.railway.app/servicios)
+[![Portal](https://img.shields.io/badge/%F0%9F%91%A4%20PORTAL-Clientes-16A34A?style=for-the-badge&labelColor=1A1A1A)](https://crisamex-web-production.up.railway.app/portal/login)
+
+</div>
+
+<br/>
+
+---
+
+<br/>
 
 <div align="center">
 
-<!-- ══ HERO BANNER ANIMADO ══════════════════════════════════ -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=C8151B&height=300&section=header&text=CRISAMEX&fontSize=120&fontColor=ffffff&animation=fadeIn&fontAlignY=55&stroke=C8151B&strokeWidth=3&desc=◈%20Control%20de%20Radiaciones%20e%20Ingeniería%20S.A.%20de%20C.V.%20◈&descSize=18&descColor=rgba(255,200,200,0.9)&descAlignY=75"/>
+## 🧬 ¿Qué es CRISAMEX?
 
-<!-- ══ TYPING SVG ANIMADO ══════════════════════════════════ -->
+</div>
+
+> Plataforma web **enterprise completa** para **Control de Radiaciones e Ingeniería, S.A. de C.V.** — empresa mexicana líder en Seguridad Radiológica con **+25 años** de experiencia, certificada ante **CNSNS · STPS · COFEPRIS · SCT**.
+>
+> Construida desde cero en **PHP 8.2** con arquitectura MVC propia, **sin frameworks**, con seguridad de nivel bancario y desplegada en Railway con CI/CD automático desde GitHub.
+
 <br/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=3000&pause=1000&color=C8151B&center=true&vCenter=true&multiline=false&repeat=true&width=600&lines=🔬+Seguridad+Radiológica+de+Clase+Mundial;⚡+PHP+8.2+%2B+MySQL+8+%2B+Docker;🔒+Enterprise+Security+8+Layers;🚀+CI%2FCD+Automático+con+Railway;🏆+25%2B+Años+de+Experiencia)](https://crisamex-web-production.up.railway.app/)
+<div align="center">
+
+| 🏗️ Módulos | 🛡️ Capas Seguridad | 🗄️ Tablas BD | ⚡ Carga | ⏱️ Horas Dev | 🎯 Uptime |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| **3 sistemas** | **8 enterprise** | **13 tablas** | **< 2 seg** | **293 hrs** | **99.9%** |
+
+</div>
 
 <br/>
 
-<!-- ══ STATUS BADGES ══════════════════════════════════════ -->
-<a href="https://crisamex-web-production.up.railway.app/">
-<img src="https://img.shields.io/badge/⬤_LIVE-EN_PRODUCCIÓN-00FF88?style=for-the-badge&labelColor=0D1117&color=00FF88"/>
-</a>
-<img src="https://img.shields.io/github/last-commit/EMMANUELVELASQUEZ/crisamex-web?style=for-the-badge&color=C8151B&labelColor=0D1117&label=ÚLTIMO_COMMIT"/>
-<img src="https://img.shields.io/github/languages/top/EMMANUELVELASQUEZ/crisamex-web?style=for-the-badge&color=777BB4&labelColor=0D1117"/>
-<img src="https://img.shields.io/github/repo-size/EMMANUELVELASQUEZ/crisamex-web?style=for-the-badge&color=0057B7&labelColor=0D1117&label=TAMAÑO"/>
+---
+
+<br/>
+
+## 🛠️ Herramientas del Proyecto
+
+<br/>
+
+<div align="center">
+
+### Backend & Lenguajes
+
+<br/>
+
+<a href="https://www.php.net"><img src="https://skillicons.dev/icons?i=php" height="60" alt="PHP 8.2"/></a>&nbsp;&nbsp;
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js" height="60" alt="JavaScript ES6+"/></a>&nbsp;&nbsp;
+<a href="https://nodejs.org"><img src="https://skillicons.dev/icons?i=nodejs" height="60" alt="Node.js"/></a>&nbsp;&nbsp;
+<a href="https://react.dev"><img src="https://skillicons.dev/icons?i=react" height="60" alt="React"/></a>
 
 <br/><br/>
 
-<!-- ══ QUICK ACCESS BUTTONS ═════════════════════════════════ -->
-<a href="https://crisamex-web-production.up.railway.app/">
-<img src="https://img.shields.io/badge/🌐_SITIO_WEB-Ver_en_Vivo-C8151B?style=for-the-badge&labelColor=0D1117"/>
-</a>
-<a href="https://crisamex-web-production.up.railway.app/servicios">
-<img src="https://img.shields.io/badge/📋_SERVICIOS-Radiológicos-003087?style=for-the-badge&labelColor=0D1117"/>
-</a>
-<a href="https://crisamex-web-production.up.railway.app/portal/login">
-<img src="https://img.shields.io/badge/👤_PORTAL-Clientes-16A34A?style=for-the-badge&labelColor=0D1117"/>
-</a>
-<a href="https://github.com/EMMANUELVELASQUEZ/crisamex-web">
-<img src="https://img.shields.io/badge/⭐_STAR-Este_Repo-FFD700?style=for-the-badge&labelColor=0D1117"/>
-</a>
-
-</div>
-
----
-
-<div align="center">
-
-<!-- ══ STATS CARDS ════════════════════════════════════════ -->
-```
-╔══════════════════╦══════════════════╦══════════════════╦══════════════════╗
-║    🏗️  MÓDULOS   ║   🛡️  SEGURIDAD  ║   🗄️  DATABASE   ║   ⚡  PERFORMANCE ║
-║      3 sistemas  ║   8 capas live   ║   13 tablas BD   ║   < 2s carga     ║
-╠══════════════════╬══════════════════╬══════════════════╬══════════════════╣
-║   🛠️  TOOLS      ║   📦  STACK      ║   ⏱️  DEV TIME    ║   🎯  UPTIME     ║
-║  15 herramientas ║  PHP 8.2 + MVC   ║   293 hrs dev    ║   99.9% target   ║
-╚══════════════════╩══════════════════╩══════════════════╩══════════════════╝
-```
-
-</div>
+### Frontend & Estilos
 
 <br/>
 
----
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://skillicons.dev/icons?i=html" height="60" alt="HTML5"/></a>&nbsp;&nbsp;
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://skillicons.dev/icons?i=css" height="60" alt="CSS3"/></a>
 
-## 🧬 &nbsp; Sobre el Proyecto
-
-<img align="right" width="380" src="https://github-readme-stats.vercel.app/api/pin/?username=EMMANUELVELASQUEZ&repo=crisamex-web&theme=github_dark&bg_color=0D1117&border_color=C8151B&title_color=C8151B&text_color=ffffff&icon_color=C8151B"/>
-
-**CRISAMEX** es una plataforma web empresarial de nivel enterprise construida desde cero para **Control de Radiaciones e Ingeniería, S.A. de C.V.** — empresa mexicana líder en Seguridad Radiológica con **+25 años** de experiencia y certificaciones ante **CNSNS, STPS, COFEPRIS y SCT**.
-
-### ¿Qué hace diferente a este proyecto?
-
-- 🔴 **Sin frameworks** — PHP puro con arquitectura MVC propia optimizada
-- 🔴 **Seguridad bancaria** — 8 capas equivalentes a BBVA y Banorte
-- 🔴 **Zero dependencies** — CSS y JS vanilla, sin React ni Vue en producción
-- 🔴 **CI/CD completo** — Push → Build → Deploy automático < 5 minutos
-- 🔴 **Mobile-first** — Optimizado para Dynamic Island del iPhone 16 Pro Max
-- 🔴 **UTF-8 total** — Español correcto con tildes y ñ en todos los niveles
-
-<br clear="right"/>
-
----
-
-## 🛠️ &nbsp; Herramientas Utilizadas
-
-<br/>
-
-<div align="center">
-
-<!-- ══ FILA 1: BACKEND ════════════════════════════════════ -->
-### 🔥 &nbsp; Backend & Lenguajes
-
-<table>
-<tr>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=php" width="65" height="65" alt="PHP"/>
-<br/>
-<sub><b>PHP 8.2</b></sub>
-<br/>
-<sub>Backend · MVC</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=js" width="65" height="65" alt="JavaScript"/>
-<br/>
-<sub><b>JavaScript</b></sub>
-<br/>
-<sub>ES6+ · Vanilla</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=nodejs" width="65" height="65" alt="Node.js"/>
-<br/>
-<sub><b>Node.js</b></sub>
-<br/>
-<sub>Build Tools</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=react" width="65" height="65" alt="React"/>
-<br/>
-<sub><b>React</b></sub>
-<br/>
-<sub>Componentes UI</sub>
-</td>
-</tr>
-</table>
-
-<br/>
-
-### 🎨 &nbsp; Frontend & Diseño
-
-<table>
-<tr>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=html" width="65" height="65" alt="HTML5"/>
-<br/>
-<sub><b>HTML5</b></sub>
-<br/>
-<sub>Semántico · SEO</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=css" width="65" height="65" alt="CSS3"/>
-<br/>
-<sub><b>CSS3</b></sub>
-<br/>
-<sub>Vanilla · 1,500+ líneas</sub>
-</td>
-</tr>
-</table>
-
-<br/>
-
-### 🗄️ &nbsp; Base de Datos
-
-<table>
-<tr>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=mysql" width="65" height="65" alt="MySQL"/>
-<br/>
-<sub><b>MySQL 8.0</b></sub>
-<br/>
-<sub>13 tablas · PDO</sub>
-</td>
-<td align="center" width="110">
-<img src="https://img.shields.io/badge/phpMyAdmin-4.9-F89C0E?style=flat-square&logo=phpmyadmin&logoColor=white" width="auto" height="28"/>
 <br/><br/>
-<sub><b>phpMyAdmin</b></sub>
-<br/>
-<sub>Admin visual BD</sub>
-</td>
-</tr>
-</table>
+
+### Base de Datos
 
 <br/>
 
-### 🐳 &nbsp; DevOps & Infraestructura
+<a href="https://www.mysql.com"><img src="https://skillicons.dev/icons?i=mysql" height="60" alt="MySQL 8.0"/></a>
 
-<table>
-<tr>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=docker" width="65" height="65" alt="Docker"/>
-<br/>
-<sub><b>Docker</b></sub>
-<br/>
-<sub>Debian Bookworm</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=linux" width="65" height="65" alt="Linux"/>
-<br/>
-<sub><b>Linux</b></sub>
-<br/>
-<sub>Servidor OS</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=apache" width="65" height="65" alt="Apache"/>
-<br/>
-<sub><b>Apache 2.4</b></sub>
-<br/>
-<sub>HTTP · GZIP · WAF</sub>
-</td>
-<td align="center" width="110">
-<img src="https://img.shields.io/badge/Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white" width="auto" height="28"/>
 <br/><br/>
-<sub><b>Railway</b></sub>
-<br/>
-<sub>Cloud · CI/CD · SSL</sub>
-</td>
-</tr>
-</table>
+
+### DevOps & Infraestructura
 
 <br/>
 
-### 🔧 &nbsp; Control de Versiones & Editor
+<a href="https://www.docker.com"><img src="https://skillicons.dev/icons?i=docker" height="60" alt="Docker"/></a>&nbsp;&nbsp;
+<a href="https://www.linux.org"><img src="https://skillicons.dev/icons?i=linux" height="60" alt="Linux Debian"/></a>&nbsp;&nbsp;
+<a href="https://httpd.apache.org"><img src="https://skillicons.dev/icons?i=apache" height="60" alt="Apache 2.4"/></a>
 
-<table>
-<tr>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=git" width="65" height="65" alt="Git"/>
+<br/><br/>
+
+### Control de Versiones & Editor
+
 <br/>
-<sub><b>Git</b></sub>
+
+<a href="https://git-scm.com"><img src="https://skillicons.dev/icons?i=git" height="60" alt="Git"/></a>&nbsp;&nbsp;
+<a href="https://github.com"><img src="https://skillicons.dev/icons?i=github" height="60" alt="GitHub"/></a>&nbsp;&nbsp;
+<a href="https://code.visualstudio.com"><img src="https://skillicons.dev/icons?i=vscode" height="60" alt="VS Code"/></a>
+
+</div>
+
 <br/>
-<sub>Control versiones</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=github" width="65" height="65" alt="GitHub"/>
-<br/>
-<sub><b>GitHub</b></sub>
-<br/>
-<sub>Repo · CI/CD</sub>
-</td>
-<td align="center" width="110">
-<img src="https://skillicons.dev/icons?i=vscode" width="65" height="65" alt="VS Code"/>
-<br/>
-<sub><b>VS Code</b></sub>
-<br/>
-<sub>IDE principal</sub>
-</td>
-</tr>
-</table>
+
+<div align="center">
+
+| # | Herramienta | Version | Uso principal |
+|:-:|:-----------:|:-------:|:--------------|
+| 1 | **PHP** | 8.2 | Backend · MVC · Controllers · Helpers |
+| 2 | **MySQL** | 8.0 | Base de datos · 13 tablas · PDO utf8mb4 |
+| 3 | **Apache** | 2.4.67 | HTTP · GZIP · mod_rewrite · WAF |
+| 4 | **Docker** | Latest | Contenedor Debian Bookworm Slim |
+| 5 | **Railway** | Cloud | Deploy · MySQL managed · SSL auto |
+| 6 | **JavaScript** | ES6+ | Canvas · AJAX · Animaciones · Contador |
+| 7 | **CSS3** | Vanilla | Sistema de diseno propio · 1500+ lineas |
+| 8 | **Node.js** | LTS | Build tools · Generacion de documentos |
+| 9 | **React** | 18 | Componentes UI del panel admin |
+| 10 | **Git** | 2.x | Control de versiones · Historial |
+| 11 | **GitHub** | Cloud | Repositorio · CI/CD auto-deploy |
+| 12 | **VS Code** | Latest | IDE principal del desarrollo |
+| 13 | **Linux** | Debian | OS del servidor en Docker |
+| 14 | **phpMyAdmin** | Latest | Gestion visual de la BD local |
+| 15 | **HTML5** | Semantico | Estructura · SEO · Accesibilidad |
 
 </div>
 
@@ -242,302 +135,243 @@
 
 ---
 
-## ✨ &nbsp; Sistema Completo — 3 Módulos
+<br/>
+
+## ✨ Features del Sistema
 
 <br/>
 
-<div align="center">
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                                                                         │
-│   🌐 SITIO PÚBLICO          👤 PORTAL CLIENTES       ⚙️ PANEL ADMIN    │
-│   ─────────────────         ─────────────────         ──────────────   │
-│   6 páginas opt.            Login + Registro          Dashboard live   │
-│   Hero partículas           Dashboard stats           Comunicaciones   │
-│   6 servicios reales        Chat WhatsApp             CRUD clientes    │
-│   Contador animado          Documentos PDF            CRUD servicios   │
-│   Responsive total          Gestión licencias         Upload fotos     │
-│   SEO + G.Console           Perfil editable           Config SEO       │
-│   GZIP + Cache              Notificaciones            Logs auditoría   │
-│   Dynamic Island iOS        Emails automáticos        IP whitelist     │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
 <table>
-<tr>
-<td width="33%" valign="top">
+  <tr>
+    <td width="50%" valign="top">
 
 ### 🌐 Sitio Web Público
 
-```diff
-+ 6 páginas optimizadas
-+ Hero con partículas canvas
-+ 6 servicios con precios
-+ Contador animado
-+ Responsive iPhone 16 Pro Max
-+ SEO completo + Search Console
-+ GZIP + Browser cache 1 año
-+ Dynamic Island safe-area
-+ Open Graph completo
-+ Botones flotantes RRSS
 ```
-
-</td>
-<td width="33%" valign="top">
-
-### 👤 Portal de Clientes
-
-```diff
-+ Auth con rate limiting
-+ Registro + selector planes
-+ Dashboard con stats live
-+ Chat bidireccional WhatsApp
-+ Descarga de documentos PDF
-+ Gestión de licencia activa
-+ Edición de perfil segura
-+ Notificaciones push
-+ Sesiones HttpOnly SameSite
-+ 6 emails automáticos
+✦  6 paginas completamente optimizadas
+✦  Hero con animacion de particulas (canvas)
+✦  6 servicios radiologicos con precios reales
+✦  Contador animado de estadisticas
+✦  Diseno responsive iPhone 16 Pro Max
+✦  SEO completo + Google Search Console
+✦  GZIP + Cache de navegador 1 ano
+✦  Dynamic Island safe-area-inset (iOS)
+✦  Open Graph para redes sociales
+✦  Botones flotantes RRSS
 ```
-
-</td>
-<td width="33%" valign="top">
 
 ### ⚙️ Panel de Administración
 
-```diff
-+ Dashboard con métricas live
-+ Comunicaciones tipo Intercom
-+ CRUD clientes + licencias
-+ CRUD servicios + imágenes
-+ Upload fotos del equipo
-+ Configuración SEO global
-+ Gestión mensajes web
-+ Auditoría log completa
-+ IP whitelist admin
-+ Logs de seguridad
+```
+✦  Dashboard con metricas en tiempo real
+✦  Comunicaciones tipo Intercom (3 cols)
+✦  CRUD completo de clientes y licencias
+✦  CRUD de servicios con imagenes
+✦  Upload de fotos del equipo
+✦  Configuracion SEO global del sitio
+✦  Gestion de mensajes del formulario
+✦  Log de auditoria completo
+✦  Acceso restringido por IP fija
+✦  Logs de seguridad y ataques
 ```
 
-</td>
-</tr>
+    </td>
+    <td width="50%" valign="top">
+
+### 👤 Portal de Clientes
+
+```
+✦  Autenticacion con rate limiting
+✦  Registro con selector de planes
+✦  Dashboard con estadisticas live
+✦  Chat bidireccional tipo WhatsApp
+✦  Descarga de documentos PDF
+✦  Gestion de licencia activa
+✦  Edicion de perfil con validacion
+✦  Notificaciones push en tiempo real
+✦  Sesiones seguras HttpOnly SameSite
+✦  6 emails automaticos SMTP
+```
+
+### 🔒 Seguridad Enterprise
+
+```
+✦  HTTPS + HSTS max-age 1 ano
+✦  HTTP Security Headers completos
+✦  Apache WAF (.htaccess)
+✦  Rate limiting 200 req/min por IP
+✦  25 patrones de deteccion ataques
+✦  CSRF tokens con expiracion 2h
+✦  PDO Prepared Statements
+✦  bcrypt cost-12 para contrasenas
+✦  Session hijacking guard
+✦  security.log evidencia forense
+```
+
+    </td>
+  </tr>
 </table>
 
----
-
-## 🏗️ &nbsp; Arquitectura del Sistema
-
-<div align="center">
-
-```
-                        ┌──────────────────────┐
-                        │   👤 USUARIO FINAL    │
-                        │  Navegador / iOS / ☎  │
-                        └──────────┬───────────┘
-                                   │
-                              HTTPS / TLS 1.3
-                                   │
-                        ┌──────────▼───────────┐
-                        │    RAILWAY CLOUD      │
-                        │  CDN · LB · SSL Auto  │
-                        └──────────┬───────────┘
-                                   │
-                   ┌───────────────▼────────────────┐
-                   │      DOCKER CONTAINER           │
-                   │    Debian Bookworm Slim         │
-                   │                                 │
-                   │  ┌───────────────────────────┐  │
-                   │  │  Apache 2.4               │  │
-                   │  │  ├── mod_rewrite          │  │
-                   │  │  ├── mod_deflate (GZIP)   │  │
-                   │  │  ├── mod_expires (Cache)  │  │
-                   │  │  └── mod_headers (Sec)    │  │
-                   │  └──────────┬────────────────┘  │
-                   │             │                   │
-                   │  ┌──────────▼────────────────┐  │
-                   │  │  PHP 8.2 + OPcache        │  │
-                   │  │  index.php → Router        │  │
-                   │  │  ├── /public  (sitio)      │  │
-                   │  │  ├── /admin   (gestión)    │  │
-                   │  │  └── /portal  (clientes)   │  │
-                   │  └──────────┬────────────────┘  │
-                   └─────────────┼───────────────────┘
-                                 │
-                    mysql.railway.internal:3306
-                                 │
-                   ┌─────────────▼───────────────────┐
-                   │        MySQL 8.0                │
-                   │  13 tablas · utf8mb4 · Backups  │
-                   └─────────────────────────────────┘
-```
-
-</div>
-
-### 📐 &nbsp; Patrón MVC Propio
-
-```
-public/index.php          ← 🚪 Entry Point · Router · Security Gate
-│
-├── src/config/           ← ⚙️  PDO Singleton · utf8mb4 · env vars
-├── src/helpers/          ← 🔒 Security.php + 📧 Mailer.php
-│
-└── src/controllers/      ← 🧠 Lógica de negocio
-    ├── home.php
-    ├── servicios.php
-    ├── certificaciones.php
-    ├── planes.php
-    ├── contacto.php
-    ├── admin/            ← 8 módulos de gestión
-    └── portal/           ← 7 módulos de cliente
-```
+<br/>
 
 ---
 
-## 🔐 &nbsp; Seguridad Enterprise
+<br/>
 
-<div align="center">
-
-```
- ██████╗██████╗██╗████████╗██╗ ██████╗ █████╗ ██╗     
-██╔════╝██╔══██╗██║╚══██╔══╝██║██╔════╝██╔══██╗██║     
-██║     ██████╔╝██║   ██║   ██║██║     ███████║██║     
-██║     ██╔══██╗██║   ██║   ██║██║     ██╔══██║██║     
-╚██████╗██║  ██║██║   ██║   ██║╚██████╗██║  ██║███████╗
- ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝
-
-    8 CAPAS • DEFENSA EN PROFUNDIDAD • NIVEL BANCARIO
-```
-
-</div>
-
-> [!IMPORTANT]
-> Implementación basada en **OWASP Top 10**, **CIS Controls** y mejores prácticas de seguridad bancaria en México (BBVA · Banorte · SAT).
-
-<table>
-<tr>
-<td width="50%">
-
-```
-┌─────────────────────────────────────┐
-│                                     │
-│  CAPA 1  ▸  HTTPS + HSTS           │
-│           TLS 1.3 · max-age=1año   │
-│                                     │
-│  CAPA 2  ▸  HTTP Security Headers  │
-│           CSP · X-Frame · Perms    │
-│                                     │
-│  CAPA 3  ▸  Apache WAF             │
-│           Bloquea: Nikto · SQLmap  │
-│                                     │
-│  CAPA 4  ▸  Rate Limiting          │
-│           200 req/min · 5/5min IP  │
-│                                     │
-│  CAPA 5  ▸  PHP Attack Detection   │
-│           25 patrones regex        │
-│                                     │
-│  CAPA 6  ▸  CSRF + Sessions        │
-│           Tokens 2h · HttpOnly     │
-│                                     │
-│  CAPA 7  ▸  PDO + bcrypt           │
-│           Prepared · cost-12       │
-│                                     │
-│  CAPA 8  ▸  Security Log           │
-│           IP · URI · Timestamp     │
-│                                     │
-└─────────────────────────────────────┘
-```
-
-</td>
-<td width="50%">
-
-| Ataque | Estado |
-|--------|:------:|
-| SQL Injection | ✅ |
-| XSS Cross-Site Scripting | ✅ |
-| CSRF Forgery | ✅ |
-| Brute Force Login | ✅ |
-| Clickjacking | ✅ |
-| Session Hijacking | ✅ |
-| Path Traversal | ✅ |
-| DDoS / Flooding | ✅ |
-| Scanner Tools | ✅ |
-| MIME Sniffing | ✅ |
-| Info Leaking | ✅ |
-| File Exposure | ✅ |
-
-**Herramientas bloqueadas:**
-
-```bash
-# .htaccess WAF bloquea:
-nikto · sqlmap · nmap
-masscan · nessus · burpsuite
-dirbuster · gobuster · wfuzz
-acunetix · appscan · zgrab
-```
-
-</td>
-</tr>
-</table>
-
----
-
-## 🗄️ &nbsp; Base de Datos — 13 Tablas
-
-<details>
-<summary><b>📐 Ver diagrama completo de relaciones</b></summary>
+## 🏗️ Arquitectura
 
 <br/>
 
 ```
- ┌──────────────────┐         ┌───────────────────┐
- │  admin_usuarios  │         │      clientes      │
- │──────────────────│         │───────────────────│
- │ 🔑 id · PK       │         │ 🔑 id · PK         │
- │    nombre        │         │    nombre          │
- │    email UNIQUE  │         │    email UNIQUE    │
- │    password_hash │         │    password_hash   │
- │    rol           │         │ 🔗 plan_id · FK     │
- │    activo        │         │    activo          │
- └──────────────────┘         └────────┬──────────┘
-                                        │
-              ┌─────────────────────────┤
-              │              │          │
- ┌────────────▼───┐ ┌────────▼──────┐ ┌▼─────────────────┐
- │portal_mensajes │ │portal_docs    │ │portal_notificac. │
- │────────────────│ │───────────────│ │──────────────────│
- │🔗 cliente_id FK│ │🔗 cliente_id  │ │🔗 cliente_id     │
- │   mensaje      │ │   nombre_arch.│ │   mensaje        │
- │   remitente    │ │   url_archivo │ │   leida          │
- │   leido/fecha  │ │   tipo/fecha  │ │   fecha          │
- └────────────────┘ └───────────────┘ └──────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│                          USUARIO FINAL                               │
+│                   Navegador · iOS · Android                          │
+└────────────────────────────┬─────────────────────────────────────────┘
+                             │ HTTPS / TLS 1.3
+                             ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                        RAILWAY CLOUD                                 │
+│              CDN · Load Balancer · SSL Automatico                    │
+└────────────────────────────┬─────────────────────────────────────────┘
+                             │
+┌────────────────────────────▼─────────────────────────────────────────┐
+│                   DOCKER CONTAINER                                   │
+│                Debian Bookworm Slim                                  │
+│                                                                      │
+│   ┌─────────────────────────────────────────────────────────────┐   │
+│   │  Apache 2.4  ·  mod_rewrite  ·  GZIP  ·  Cache  ·  WAF    │   │
+│   └──────────────────────────┬──────────────────────────────────┘   │
+│                              │                                       │
+│   ┌──────────────────────────▼──────────────────────────────────┐   │
+│   │              PHP 8.2  +  OPcache                            │   │
+│   │            public/index.php  →  Router                      │   │
+│   │                                                             │   │
+│   │   /sitio-web (publico)                                      │   │
+│   │   /admin     (gestion interna)                              │   │
+│   │   /portal    (autoservicio clientes)                        │   │
+│   └─────────────────────────────────────────────────────────────┘   │
+└────────────────────────────┬─────────────────────────────────────────┘
+                             │ mysql.railway.internal:3306
+                             ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│              MySQL 8.0  ·  13 tablas  ·  utf8mb4                    │
+│              Backups automaticos  ·  Railway Managed                 │
+└──────────────────────────────────────────────────────────────────────┘
+```
 
- Tablas independientes:
- ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
- │ site_config  │ │  servicios   │ │certificacion.│
- │ estadisticas │ │    equipo    │ │   valores    │
- │    planes    │ │contacto_msgs │ └──────────────┘
- └──────────────┘ └──────────────┘
+<br/>
+
+---
+
+<br/>
+
+## 🔐 Seguridad
+
+<br/>
+
+<div align="center">
+
+```
+   A T A C A N T E
+         │
+         ▼
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│  CAPA 1 ▸ HTTPS + HSTS     TLS 1.3 · 1 año    │
+│  CAPA 2 ▸ HTTP Headers     CSP · X-Frame       │
+│  CAPA 3 ▸ Apache WAF       Nikto · SQLmap       │
+│  CAPA 4 ▸ Rate Limiting    200/min · 5/5min     │
+│  CAPA 5 ▸ PHP Detection    25 patrones regex    │
+│  CAPA 6 ▸ CSRF + Sessions  Tokens · HttpOnly    │
+│  CAPA 7 ▸ PDO + bcrypt     Prepared · cost-12   │
+│  CAPA 8 ▸ Security Log     IP · URI · Forense   │
+│                                                 │
+└──────────────────────┬──────────────────────────┘
+                       │
+                       ▼
+             BLOQUEADO ✅ / REGISTRADO 📝
+```
+
+</div>
+
+<br/>
+
+<div align="center">
+
+| Ataque | Tecnica de proteccion | Estado |
+|:-------|:----------------------|:------:|
+| SQL Injection | PDO Prepared Statements — parametros enlazados | ✅ |
+| XSS | Content-Security-Policy + sanitizacion global | ✅ |
+| CSRF | Tokens unicos por sesion — expiracion 2h | ✅ |
+| Brute Force | Rate limiting 5 intentos / 5 min por IP | ✅ |
+| Clickjacking | X-Frame-Options DENY · frame-ancestors none | ✅ |
+| Session Hijacking | Validacion IP + User-Agent por request | ✅ |
+| Path Traversal | Regex sobre inputs y URI | ✅ |
+| DDoS / Flooding | 200 peticiones/min por IP → HTTP 429 | ✅ |
+| Scanner Tools | Bloqueo de Nikto · SQLmap · Nmap · Burp | ✅ |
+| File Exposure | .env .sql .log → 403 Forbidden | ✅ |
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+## 🗄️ Base de Datos
+
+<br/>
+
+<details>
+<summary><b>📐 Ver diagrama de las 13 tablas</b></summary>
+
+<br/>
+
+```
+  ┌──────────────────┐          ┌───────────────────┐
+  │  admin_usuarios  │          │      clientes      │
+  │──────────────────│          │───────────────────│
+  │  id PK           │          │  id PK             │
+  │  nombre          │          │  nombre            │
+  │  email UNIQUE    │          │  email UNIQUE      │
+  │  password_hash   │          │  password_hash     │
+  │  rol             │          │  plan_id FK        │
+  │  activo          │          │  activo            │
+  └──────────────────┘          └────────┬──────────┘
+                                          │  1:N
+               ┌──────────────────────────┤
+               │              │           │
+  ┌────────────▼────┐  ┌──────▼──────┐  ┌▼──────────────┐
+  │portal_mensajes  │  │ portal_docs │  │portal_notific.│
+  │─────────────────│  │─────────────│  │───────────────│
+  │  cliente_id FK  │  │ cliente_id  │  │ cliente_id    │
+  │  mensaje        │  │ nombre_arch │  │ mensaje       │
+  │  remitente      │  │ url_archivo │  │ leida         │
+  │  leido · fecha  │  │ tipo · fecha│  │ fecha         │
+  └─────────────────┘  └─────────────┘  └───────────────┘
+
+  Tablas de catalogo:
+  site_config · servicios · certificaciones · equipo
+  valores · estadisticas · planes · contacto_mensajes
 ```
 
 </details>
 
 <details>
-<summary><b>📋 Ver descripción de las 13 tablas</b></summary>
+<summary><b>📋 Ver las 13 tablas con descripcion</b></summary>
 
 <br/>
 
-| # | Tabla | Descripción | Registros |
-|:-:|-------|-------------|:---------:|
-| 1 | `site_config` | Configuración global: SEO, contacto, redes | 10 |
-| 2 | `servicios` | 6 servicios radiológicos con precios reales | 6 |
-| 3 | `certificaciones` | ISO 9001, CNSNS, STPS, COFEPRIS, SCT | 5 |
+| # | Tabla | Descripcion | Registros |
+|:-:|:------|:------------|:---------:|
+| 1 | `site_config` | Configuracion global SEO · contacto · redes | 10 |
+| 2 | `servicios` | 6 servicios radiologicos con precios reales | 6 |
+| 3 | `certificaciones` | ISO 9001 · CNSNS · STPS · COFEPRIS · SCT | 5 |
 | 4 | `equipo` | Miembros del equipo con foto y cargo | 4 |
-| 5 | `valores` | Valores corporativos con íconos FA | 6 |
+| 5 | `valores` | Valores corporativos con iconos FA | 6 |
 | 6 | `estadisticas` | Contadores animados del hero | 4 |
-| 7 | `planes` | Básico · Profesional · Enterprise | 3 |
+| 7 | `planes` | Basico · Profesional · Enterprise | 3 |
 | 8 | `admin_usuarios` | Administradores del sistema | 1 |
 | 9 | `clientes` | Clientes registrados en el portal | — |
 | 10 | `contacto_mensajes` | Mensajes del formulario web | — |
@@ -547,44 +381,64 @@ acunetix · appscan · zgrab
 
 </details>
 
+<br/>
+
 ---
 
-## 🚀 &nbsp; Instalación & Setup
+<br/>
+
+## 🚀 Instalacion
+
+<br/>
 
 <details>
-<summary><b>⚡ Instalación rápida (3 pasos)</b></summary>
+<summary><b>⚡ Setup rapido en 3 pasos</b></summary>
 
 <br/>
 
 **Prerrequisitos:**
 
 ```bash
-docker --version   # ≥ 20.x
-git --version      # ≥ 2.x
+docker --version   # >= 20.x
+git --version      # >= 2.x
 ```
 
-**Setup completo:**
+**Instalacion:**
 
 ```bash
-# ─── 1. Clonar ──────────────────────────────────────────────
+# 1. Clonar el repositorio
 git clone https://github.com/EMMANUELVELASQUEZ/crisamex-web.git
 cd crisamex-web
 
-# ─── 2. Levantar con Docker ─────────────────────────────────
+# 2. Levantar entorno completo con Docker
 docker-compose up -d --build
 
-# ─── 3. Inicializar BD ──────────────────────────────────────
-docker exec crisamex_db mysql -u crisamex_user -p*** \
+# 3. Inicializar la base de datos
+docker exec crisamex_db mysql -u crisamex_user -p \
   crisamex_db < crisamex/database/init.sql
 
-# ─── ✅ Listo en < 2 minutos ────────────────────────────────
+# Listo en menos de 2 minutos
 open http://localhost:8090
 ```
 
 </details>
 
 <details>
-<summary><b>🔧 Comandos útiles Docker</b></summary>
+<summary><b>🔧 URLs locales de desarrollo</b></summary>
+
+<br/>
+
+| Modulo | URL | Descripcion |
+|:-------|:----|:------------|
+| 🌐 Sitio web | `http://localhost:8090` | Sitio completo |
+| 🔐 Panel admin | `http://localhost:8090/admin` | Gestion interna |
+| 👤 Portal clientes | `http://localhost:8090/portal` | Autoservicio |
+| 🗄️ phpMyAdmin | `http://localhost:8091` | BD visual |
+
+</details>
+
+<details>
+<summary><b>🐳 Comandos Docker esenciales</b></summary>
 
 <br/>
 
@@ -598,7 +452,7 @@ docker exec -it crisamex_app bash
 # Ver errores PHP
 docker exec crisamex_app tail -f /var/log/apache2/error.log
 
-# Reiniciar servidor
+# Reiniciar Apache
 docker restart crisamex_app
 
 # Parar todo
@@ -610,168 +464,157 @@ docker-compose down && docker-compose up -d --build
 
 </details>
 
-<details>
-<summary><b>⚙️ Variables de entorno</b></summary>
-
 <br/>
-
-Crear `/crisamex/.env`:
-
-```env
-# ── Aplicación ──────────────────────────────────────
-APP_ENV=production
-APP_URL=https://tu-dominio.com
-
-# ── Base de Datos ─────────────────────────────────
-DB_HOST=mysql.railway.internal
-DB_NAME=railway
-DB_USER=root
-DB_PASS=********************
-DB_PORT=3306
-
-# ── Email SMTP ────────────────────────────────────
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USER=********************
-MAIL_PASS=********************
-MAIL_FROM_NAME=CRISAMEX
-```
-
-> ⚠️ Nunca subas `.env` a GitHub — está en `.gitignore`
-
-</details>
 
 ---
 
-## 🌐 &nbsp; Deploy en Railway
+<br/>
+
+## 🌐 Deploy Railway
+
+<br/>
 
 <div align="center">
 
 ```
-  ┌─────────────┐     ┌─────────────────┐     ┌──────────────────┐
-  │  git push   │────▶│  Railway detects │────▶│  Docker build    │
-  │  origin main│     │  push via webhook│     │  ~2-3 min        │
-  └─────────────┘     └─────────────────┘     └────────┬─────────┘
-                                                        │
-                       ┌────────────────────────────────▼─────────┐
-                       │  Health checks ✅  →  Traffic switch  🔀  │
-                       │  Old container removed → Zero downtime 🟢 │
-                       └──────────────────────────────────────────┘
+git push origin main
+       │
+       ▼ automatico
+Railway detecta push
+       │
+       ▼
+Docker build ~3 min
+       │
+       ▼
+Health checks ✅
+       │
+       ▼
+🟢 LIVE sin downtime
 ```
 
 </div>
 
-| Parámetro | Valor |
-|-----------|:------|
+<br/>
+
+| Parametro | Valor |
+|:----------|:------|
 | Root Directory | `/crisamex` |
 | Dockerfile | `deploy/Dockerfile` |
 | Puerto | `80` |
 | Branch | `main` |
-| Auto Deploy | ✅ Push → Live |
-| SSL/TLS | ✅ Let's Encrypt auto |
+| Auto Deploy | ✅ En cada push |
+| SSL/TLS | ✅ Let's Encrypt automatico |
 | MySQL | ✅ Servicio gestionado |
+
+<br/>
 
 ---
 
-## 📁 &nbsp; Estructura del Proyecto
+<br/>
+
+## 📁 Estructura del Proyecto
+
+<br/>
 
 ```
 crisamex-web/
 │
-├── 📁 crisamex/                      ← Root Dir Railway
+├── 📁 crisamex/                      ← Root Directory Railway
 │   │
 │   ├── 📁 public/                    ← DocumentRoot Apache
-│   │   ├── 📄 index.php              ← 🚪 Router + Security Gate
-│   │   ├── 🎨 css/style.css          ← ~1,500 líneas · diseño propio
+│   │   ├── 📄 index.php              ← Router + Security Gate
+│   │   ├── 🎨 css/style.css          ← 1500+ lineas diseno propio
 │   │   ├── ⚡ js/main.js             ← Canvas · AJAX · Animaciones
 │   │   ├── 🖼️  images/               ← Logo · favicon · SVGs
 │   │   ├── 🗺️  sitemap.xml           ← SEO · 6 URLs indexadas
 │   │   ├── 🤖 robots.txt             ← Directivas crawlers
-│   │   └── 🛡️  .htaccess             ← WAF · GZIP · Cache · Rewrite
+│   │   └── 🛡️  .htaccess             ← WAF · GZIP · Cache
 │   │
-│   ├── 📁 src/                       ← Código fuente privado
+│   ├── 📁 src/                       ← Codigo fuente privado
 │   │   ├── config/database.php       ← PDO Singleton · utf8mb4
-│   │   ├── helpers/security.php      ← 8 capas · 25 patrones · logs
-│   │   ├── helpers/mailer.php        ← SMTP · 6 emails automáticos
+│   │   ├── helpers/security.php      ← 8 capas · 25 patrones
+│   │   ├── helpers/mailer.php        ← SMTP · emails automaticos
 │   │   ├── controllers/              ← 15+ controladores MVC
-│   │   │   ├── home.php
-│   │   │   ├── servicios.php
-│   │   │   ├── 📁 admin/             ← 8 módulos gestión
-│   │   │   └── 📁 portal/            ← 7 módulos clientes
+│   │   │   ├── 📁 admin/             ← 8 modulos de gestion
+│   │   │   └── 📁 portal/            ← 7 modulos de clientes
 │   │   └── views/partials/
 │   │       ├── header.php            ← Head · Navbar · Meta SEO
-│   │       └── footer.php            ← Footer · Scripts · RRSS
+│   │       └── footer.php            ← Footer · Scripts
 │   │
-│   ├── database/init.sql             ← Schema + 13 tablas + seed
-│   ├── deploy/Dockerfile             ← Debian · PHP 8.2 · OPcache
-│   └── logs/security.log            ← 🔍 Registro forense ataques
+│   ├── 📁 database/init.sql          ← Schema + 13 tablas + seed
+│   ├── 📁 deploy/Dockerfile          ← Debian · PHP 8.2 · OPcache
+│   └── 📁 logs/security.log         ← Registro forense ataques
 │
 ├── 🐳 docker-compose.yml             ← App + MySQL + phpMyAdmin
-└── 🚫 .gitignore                     ← .env · logs · .bak
+└── 🚫 .gitignore                     ← .env · logs excluidos
 ```
-
----
-
-## 📊 &nbsp; Métricas del Proyecto
-
-<div align="center">
 
 <br/>
 
-<img src="https://github-readme-stats.vercel.app/api?username=EMMANUELVELASQUEZ&show_icons=true&theme=github_dark&bg_color=0D1117&border_color=C8151B&title_color=C8151B&text_color=ffffff&icon_color=C8151B&hide_border=false" width="48%"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=EMMANUELVELASQUEZ&layout=compact&theme=github_dark&bg_color=0D1117&border_color=C8151B&title_color=C8151B&text_color=ffffff&hide_border=false" width="48%"/>
-
-<br/><br/>
-
-</div>
-
 ---
 
-## 🗺️ &nbsp; Roadmap del Proyecto
+<br/>
+
+## 🗺️ Roadmap
 
 <br/>
 
 ```
-2026 Q1 ████████████████████ 100%  Plataforma base completa
-2026 Q2 ████████████████████ 100%  Seguridad enterprise 8 capas
-2026 Q2 ████████████████████ 100%  CI/CD Railway + GitHub
-2026 Q2 ████████████████████ 100%  Encoding UTF-8 completo
-2026 Q3 ████████░░░░░░░░░░░░  40%  CFDI 4.0 integración SAT
-2026 Q3 ██░░░░░░░░░░░░░░░░░░  10%  CRM integrado al portal
-2026 Q4 ░░░░░░░░░░░░░░░░░░░░   0%  App móvil iOS + Android
-2027 Q1 ░░░░░░░░░░░░░░░░░░░░   0%  Integración API CNSNS
-2027 Q2 ░░░░░░░░░░░░░░░░░░░░   0%  Autenticación 2FA
+2026 Q1-Q2 ████████████████████ 100%   Plataforma completa + Seguridad
+2026 Q2    ████████████████████ 100%   CI/CD Railway + SEO + UTF-8
+2026 Q3    ████████░░░░░░░░░░░░  40%   CFDI 4.0 integracion SAT
+2026 Q3    ██░░░░░░░░░░░░░░░░░░  10%   CRM integrado al portal
+2026 Q4    ░░░░░░░░░░░░░░░░░░░░   0%   App movil iOS + Android
+2027 Q1    ░░░░░░░░░░░░░░░░░░░░   0%   Integracion API CNSNS
+2027 Q2    ░░░░░░░░░░░░░░░░░░░░   0%   Autenticacion 2FA
 ```
 
-- [x] Sitio web corporativo (6 páginas)
+- [x] Sitio web corporativo — 6 paginas
 - [x] Portal de clientes con chat WhatsApp
 - [x] Panel admin tipo Intercom
 - [x] BD MySQL 8 con 13 tablas
 - [x] Seguridad enterprise 8 capas
-- [x] CI/CD automático Railway
+- [x] CI/CD automatico Railway + GitHub
 - [x] SEO + Google Search Console
 - [x] Responsive iPhone 16 Pro Max
-- [x] GZIP + OPcache + Cache
-- [x] Encoding UTF-8 español completo
-- [ ] Facturación CFDI 4.0 (SAT)
-- [ ] CRM integrado
-- [ ] App móvil React Native
+- [x] GZIP + OPcache + Cache navegador
+- [x] Encoding UTF-8 espanol completo
+- [ ] Facturacion CFDI 4.0 SAT
+- [ ] CRM integrado al portal
+- [ ] App movil React Native
 - [ ] API CNSNS
-- [ ] 2FA Authentication
-
----
-
-## 👨‍💻 &nbsp; Autor
-
-<div align="center">
+- [ ] Autenticacion 2FA
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%" width="80%"/>
+---
 
-<br/><br/>
+<br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&duration=4000&pause=1000&color=C8151B&center=true&vCenter=true&width=500&lines=Emmanuel+Velásquez+Gerón;Full+Stack+Developer;Lic.+TI+en+las+Organizaciones;Ing.+en+Desarrollo+de+Software"/>
+## 📊 Stats
+
+<br/>
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=EMMANUELVELASQUEZ&show_icons=true&theme=github_dark&bg_color=0D1117&border_color=C8151B&title_color=C8151B&text_color=FFFFFF&icon_color=C8151B" width="49%"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=EMMANUELVELASQUEZ&layout=compact&theme=github_dark&bg_color=0D1117&border_color=C8151B&title_color=C8151B&text_color=FFFFFF" width="42%"/>
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+## 👨‍💻 Autor
+
+<br/>
+
+<div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=18&duration=4000&pause=1000&color=C8151B&center=true&vCenter=true&width=480&lines=Emmanuel+Velasquez+Geron;Full+Stack+Developer;Lic.+TI+en+las+Organizaciones;Ing.+en+Desarrollo+de+Software)](https://github.com/EMMANUELVELASQUEZ)
 
 <br/>
 
@@ -779,21 +622,18 @@ crisamex-web/
 
 <br/>
 
-<!-- Skill icons del autor -->
 <img src="https://skillicons.dev/icons?i=php,js,css,html,mysql,docker,git,github,vscode,linux,nodejs,react,apache&theme=dark&perline=7"/>
 
-<br/><br/>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=150&section=footer&text=© 2026 CRISAMEX&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=65&desc=Control de Radiaciones e Ingeniería S.A. de C.V.&descSize=14&descColor=rgba(255,255,255,0.7)&descAlignY=85" width="100%"/>
-
 </div>
+
+<br/>
 
 ---
 
 <div align="center">
-<sub>
-Código propietario · Todos los derechos reservados · Uso no autorizado prohibido
-<br/>
-Made with ❤️ and ☕ in Mexico City
-</sub>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=C8151B&height=140&section=footer&text=Made+with+%E2%9D%A4%EF%B8%8F+in+Mexico+City&fontSize=24&fontColor=FFFFFF&animation=fadeIn&fontAlignY=65"/>
+
+<sub>© 2026 CRISAMEX · Control de Radiaciones e Ingenieria S.A. de C.V. · Todos los derechos reservados</sub>
+
 </div>
