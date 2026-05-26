@@ -503,6 +503,8 @@ MAIL_PORT=587
 <br/>
 
 **Emmanuel Velásquez Gerón**
+<img width="115" height="109" alt="emaster5" src="https://github.com/user-attachments/assets/6aeb4027-b660-4b53-b12e-4508f2141f78" />
+<img width="770" height="898" alt="emaster" src="https://github.com/user-attachments/assets/91fea866-e016-44b3-96ac-043a7b3349aa" />
 
 [![GitHub](https://img.shields.io/badge/GitHub-EMMANUELVELASQUEZ-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EMMANUELVELASQUEZ)
 [![Email](https://img.shields.io/badge/Email-isc.emilio95%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](emmanuelvelasquez729@gmail.com)
