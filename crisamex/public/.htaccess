@@ -1,0 +1,53 @@
+
+# ═══════════════════════════════════════════════════════════════
+# PERFORMANCE — Compresión GZIP (reduce tamaño 70-80%)
+# ═══════════════════════════════════════════════════════════════
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE application/xml text/xml image/svg+xml
+    AddOutputFilterByType DEFLATE font/ttf font/otf application/font-woff
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# ═══════════════════════════════════════════════════════════════
+# PERFORMANCE — Caché del navegador
+# CSS/JS: 1 año | Imágenes: 6 meses | HTML: 1 hora
+# ═══════════════════════════════════════════════════════════════
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css              "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/jpeg            "access plus 6 months"
+    ExpiresByType image/png             "access plus 6 months"
+    ExpiresByType image/webp            "access plus 6 months"
+    ExpiresByType image/svg+xml         "access plus 6 months"
+    ExpiresByType image/x-icon          "access plus 1 year"
+    ExpiresByType font/woff2            "access plus 1 year"
+    ExpiresByType font/woff             "access plus 1 year"
+    ExpiresByType text/html             "access plus 1 hour"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "public, max-age=15552000"
+    </FilesMatch>
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+</IfModule>
+
+# ═══════════════════════════════════════════════════════════════
+# PERFORMANCE — Keep-Alive y headers de velocidad
+# ═══════════════════════════════════════════════════════════════
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+    Header always set X-Content-Type-Options "nosniff"
+    # Preload fuentes críticas
+    Header add Link "</css/style.css>; rel=preload; as=style"
+</IfModule>
