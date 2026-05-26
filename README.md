@@ -506,7 +506,7 @@ MAIL_PORT=587
 <img width="95" height="79" alt="emaster5" src="https://github.com/user-attachments/assets/6aeb4027-b660-4b53-b12e-4508f2141f78" />
 
 [![GitHub](https://img.shields.io/badge/GitHub-EMMANUELVELASQUEZ-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EMMANUELVELASQUEZ)
-[![Email](https://img.shields.io/badge/Email-emmanuelvelasquez729%gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](emmanuelvelasquez729@gmail.com)
+
 
 ![Licenciado en TI](https://img.shields.io/badge/Licenciado%20en%20TI-Organizaciones-003087?style=flat-square)
 ![Ingeniero DS](https://img.shields.io/badge/Ingeniero-Desarrollo%20de%20Software-C8151B?style=flat-square)
