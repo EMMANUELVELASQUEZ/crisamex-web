@@ -1,126 +1,240 @@
 <?php
-$adminTitle = 'Dashboard';
-$adminPage  = 'dashboard';
+/**
+ * CRISAMEX — Admin Dashboard
+ * Archivo: src/controllers/admin/dashboard.php
+ */
+$pageTitle = 'Dashboard — Panel Admin CRISAMEX';
+$bodyClass = 'admin-body';
 
-$msgs    = Database::fetchOne("SELECT COUNT(*) as c FROM contacto_mensajes")['c'] ?? 0;
-$nuevos  = Database::fetchOne("SELECT COUNT(*) as c FROM contacto_mensajes WHERE leido=0")['c'] ?? 0;
-$srvs    = Database::fetchOne("SELECT COUNT(*) as c FROM servicios WHERE activo=1")['c'] ?? 0;
-$clientes= Database::fetchOne("SELECT COUNT(*) as c FROM clientes WHERE activo=1")['c'] ?? 0;
-$msgCli  = Database::fetchOne("SELECT COUNT(*) as c FROM portal_mensajes WHERE de='cliente' AND leido_admin=0")['c'] ?? 0;
-$ultims  = Database::fetchAll("SELECT * FROM contacto_mensajes ORDER BY created_at DESC LIMIT 6");
-$ultCli  = Database::fetchAll("
-  SELECT pm.*, c.nombre, c.empresa
-  FROM portal_mensajes pm
-  JOIN clientes c ON pm.cliente_id=c.id
-  WHERE pm.de='cliente'
-  ORDER BY pm.created_at DESC LIMIT 5
-");
+require_once __DIR__ . '/../../views/partials/head.php';
 
-require_once SRC_PATH.'/views/admin/layout-top.php';
+$admin   = $_SESSION['admin_user'] ?? ['nombre'=>'Administrador'];
+$inicial = mb_substr($admin['nombre'], 0, 1, 'UTF-8');
 ?>
 
-<div class="st-row">
-  <div class="st-card">
-    <div class="st-ico r"><i class="fas fa-inbox"></i></div>
-    <div><div class="st-n"><?= $msgs ?></div><div class="st-l">Mensajes Web</div></div>
-  </div>
-  <div class="st-card">
-    <div class="st-ico y"><i class="fas fa-comments"></i></div>
-    <div><div class="st-n"><?= $msgCli ?></div><div class="st-l">Clientes sin leer</div></div>
-  </div>
-  <div class="st-card">
-    <div class="st-ico b"><i class="fas fa-users-cog"></i></div>
-    <div><div class="st-n"><?= $clientes ?></div><div class="st-l">Clientes</div></div>
-  </div>
-  <div class="st-card">
-    <div class="st-ico g"><i class="fas fa-cogs"></i></div>
-    <div><div class="st-n"><?= $srvs ?></div><div class="st-l">Servicios</div></div>
-  </div>
-</div>
+<div class="app-layout">
 
-<!-- ACCESOS RÁPIDOS -->
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;">
-  <a href="/admin/comunicaciones" style="text-decoration:none;">
-    <div class="ac" style="margin:0;padding:14px;display:flex;align-items:center;gap:12px;border-left:3px solid var(--red);cursor:pointer;">
-      <div class="st-ico r" style="flex-shrink:0"><i class="fas fa-comments"></i></div>
-      <div><div style="font-weight:700;font-size:.85rem;">Chat Clientes</div>
-      <div style="font-size:.72rem;color:var(--txt3);"><?= $msgCli ?> sin leer</div></div>
-    </div>
-  </a>
-  <a href="/admin/clientes" style="text-decoration:none;">
-    <div class="ac" style="margin:0;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
-      <div class="st-ico b" style="flex-shrink:0"><i class="fas fa-users-cog"></i></div>
-      <div><div style="font-weight:700;font-size:.85rem;">Clientes</div>
-      <div style="font-size:.72rem;color:var(--txt3);">Gestionar cuentas</div></div>
-    </div>
-  </a>
-  <a href="/admin/servicios" style="text-decoration:none;">
-    <div class="ac" style="margin:0;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
-      <div class="st-ico g" style="flex-shrink:0"><i class="fas fa-cogs"></i></div>
-      <div><div style="font-weight:700;font-size:.85rem;">Servicios</div>
-      <div style="font-size:.72rem;color:var(--txt3);">Editar contenido</div></div>
-    </div>
-  </a>
-  <a href="/admin/configuracion" style="text-decoration:none;">
-    <div class="ac" style="margin:0;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
-      <div class="st-ico y" style="flex-shrink:0"><i class="fas fa-sliders-h"></i></div>
-      <div><div style="font-weight:700;font-size:.85rem;">Configuración</div>
-      <div style="font-size:.72rem;color:var(--txt3);">Datos del sitio</div></div>
-    </div>
-  </a>
-</div>
+  <!-- ═══ SIDEBAR ADMIN ══════════════════════════════════════ -->
+  <aside class="app-sidebar" id="sidebar" role="navigation" aria-label="Menú admin">
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-
-  <!-- Mensajes de clientes del portal -->
-  <div class="ac">
-    <div class="ac-head">
-      <h2><i class="fas fa-comments"></i> Chat con Clientes</h2>
-      <a href="/admin/comunicaciones" class="ba ba-r ba-sm"><i class="fas fa-external-link-alt"></i> Abrir chat</a>
-    </div>
-    <?php if(empty($ultCli)): ?>
-    <div style="padding:30px;text-align:center;color:var(--txt3);font-size:.85rem;">
-      <i class="fas fa-comment-dots" style="font-size:2rem;display:block;margin-bottom:10px;color:#e0e0e0;"></i>
-      Sin mensajes de clientes aún
-    </div>
-    <?php else: foreach($ultCli as $m): ?>
-    <div style="padding:12px 16px;border-bottom:1px solid rgba(0,0,0,.05);display:flex;align-items:flex-start;gap:12px;">
-      <div style="width:36px;height:36px;background:rgba(200,21,27,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#C8151B;flex-shrink:0;font-size:.85rem;">
-        <?= strtoupper(substr($m['nombre'],0,1)) ?>
-      </div>
-      <div style="flex:1;min-width:0;">
-        <div style="font-size:.84rem;font-weight:600;"><?= htmlspecialchars($m['nombre']) ?> <span style="color:var(--txt3);font-weight:400;font-size:.76rem;">· <?= htmlspecialchars($m['empresa']) ?></span></div>
-        <div style="font-size:.78rem;color:var(--txt3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?= htmlspecialchars(substr($m['mensaje'],0,60)) ?>...</div>
-      </div>
-      <div style="font-size:.68rem;color:var(--txt3);flex-shrink:0;"><?= date('H:i',strtotime($m['created_at'])) ?></div>
-    </div>
-    <?php endforeach; endif; ?>
-  </div>
-
-  <!-- Mensajes web del formulario -->
-  <div class="ac">
-    <div class="ac-head">
-      <h2><i class="fas fa-inbox"></i> Mensajes Web</h2>
-      <a href="/admin/mensajes" class="ba ba-g ba-sm">Ver todos</a>
-    </div>
-    <?php if(empty($ultims)): ?>
-    <div style="padding:30px;text-align:center;color:var(--txt3);font-size:.85rem;">
-      <i class="fas fa-inbox" style="font-size:2rem;display:block;margin-bottom:10px;color:#e0e0e0;"></i>Sin mensajes
-    </div>
-    <?php else: foreach($ultims as $m): ?>
-    <div style="padding:11px 16px;border-bottom:1px solid rgba(0,0,0,.05);display:flex;align-items:center;gap:10px;">
-      <div style="flex:1;min-width:0;">
-        <div style="font-size:.83rem;font-weight:<?= !$m['leido']?'700':'400' ?>;"><?= htmlspecialchars($m['nombre']) ?></div>
-        <div style="font-size:.76rem;color:var(--txt3);"><?= htmlspecialchars($m['email']) ?></div>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <?php if(!$m['leido']): ?><span class="badge br">Nuevo</span><?php elseif(!$m['respondido']): ?><span class="badge by">Pendiente</span><?php else: ?><span class="badge bg">Respondido</span><?php endif; ?>
-        <a href="/admin/mensajes?id=<?= $m['id'] ?>" class="ba ba-g ba-sm"><i class="fas fa-eye"></i></a>
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="/images/logo-crisamex.jpg" alt="CRISAMEX">
+        <span class="sidebar-logo-text">ADMIN</span>
       </div>
     </div>
-    <?php endforeach; endif; ?>
-  </div>
 
-</div>
+    <div class="sidebar-user">
+      <div class="sidebar-user-info">
+        <div class="sidebar-avatar"><?= htmlspecialchars($inicial, ENT_QUOTES, 'UTF-8') ?></div>
+        <div>
+          <div class="sidebar-user-name"><?= htmlspecialchars($admin['nombre'], ENT_QUOTES, 'UTF-8') ?></div>
+          <div class="sidebar-user-role">Super Admin</div>
+        </div>
+      </div>
+    </div>
 
-<?php require_once SRC_PATH.'/views/admin/layout-bottom.php'; ?>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Principal</div>
+      <a href="/admin/dashboard"         class="sidebar-link active">
+        <i class="fas fa-chart-line"></i> Dashboard
+      </a>
+      <a href="/admin/comunicaciones"    class="sidebar-link">
+        <i class="fas fa-comments"></i> Comunicaciones
+        <span class="badge" id="comm-badge" style="display:none"></span>
+      </a>
+      <a href="/admin/clientes"          class="sidebar-link">
+        <i class="fas fa-users"></i> Clientes
+      </a>
+      <a href="/admin/mensajes"          class="sidebar-link">
+        <i class="fas fa-envelope"></i> Mensajes web
+        <span class="badge" id="msg-badge" style="display:none"></span>
+      </a>
+
+      <div class="sidebar-section-label">Catálogos</div>
+      <a href="/admin/servicios"         class="sidebar-link">
+        <i class="fas fa-cogs"></i> Servicios
+      </a>
+      <a href="/admin/equipo"            class="sidebar-link">
+        <i class="fas fa-users-cog"></i> Equipo
+      </a>
+
+      <div class="sidebar-section-label">Sistema</div>
+      <a href="/admin/configuracion"     class="sidebar-link">
+        <i class="fas fa-sliders-h"></i> Configuración
+      </a>
+      <a href="/" target="_blank"        class="sidebar-link">
+        <i class="fas fa-external-link-alt"></i> Ver sitio
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="/admin/logout" class="sidebar-logout">
+        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+      </a>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══ MAIN ═══════════════════════════════════════════════ -->
+  <main class="app-main">
+
+    <!-- ── TOPBAR ── -->
+    <header class="app-topbar">
+      <button class="topbar-menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fas fa-bars" style="font-size:18px"></i>
+      </button>
+
+      <span class="topbar-title">Dashboard</span>
+
+      <div class="topbar-actions">
+        <a href="/admin/mensajes" class="topbar-icon-btn" aria-label="Mensajes">
+          <i class="fas fa-envelope"></i>
+          <span class="dot" id="notif-dot" style="display:none"></span>
+        </a>
+        <a href="/admin/comunicaciones" class="topbar-icon-btn" aria-label="Chat">
+          <i class="fas fa-comments"></i>
+        </a>
+        <div class="topbar-user">
+          <div class="topbar-avatar"><?= htmlspecialchars($inicial, ENT_QUOTES, 'UTF-8') ?></div>
+          <div style="display:flex;flex-direction:column">
+            <span class="topbar-user-name"><?= htmlspecialchars(explode(' ', $admin['nombre'])[0], ENT_QUOTES, 'UTF-8') ?></span>
+            <span class="topbar-user-role">Admin</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── CONTENIDO ── -->
+    <div class="app-content">
+
+      <div class="page-header page-header-row">
+        <div>
+          <h1>Panel de Control</h1>
+          <p>Bienvenido, <?= htmlspecialchars(explode(' ', $admin['nombre'])[0], ENT_QUOTES, 'UTF-8') ?>. Aquí tienes el resumen del sistema.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/admin/clientes/nuevo" class="btn btn-primary btn-sm">
+            <i class="fas fa-user-plus"></i> Nuevo cliente
+          </a>
+        </div>
+      </div>
+
+      <!-- KPI Grid -->
+      <div class="kpi-grid" id="kpiGrid">
+        <?php for($i=0;$i<4;$i++): ?>
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <div class="kpi-icon sk" style="width:38px;height:38px">&nbsp;</div>
+          </div>
+          <div class="sk" style="height:14px;width:55%;margin:8px 0 4px">&nbsp;</div>
+          <div class="sk" style="height:30px;width:42%">&nbsp;</div>
+        </div>
+        <?php endfor; ?>
+      </div>
+
+      <!-- Grid principal -->
+      <div style="display:grid;grid-template-columns:1fr;gap:20px" id="mainGrid">
+
+        <!-- Mensajes recientes del formulario web -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">
+              <i class="fas fa-envelope" style="color:#C8151B;margin-right:8px"></i>
+              Mensajes de contacto
+            </span>
+            <a href="/admin/mensajes" class="btn btn-ghost btn-sm">Ver todos</a>
+          </div>
+          <div class="table-wrap" id="contactMsgs">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Empresa</th>
+                  <th>Servicio</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="contactMsgsTbody">
+                <?php for($i=0;$i<4;$i++): ?>
+                <tr>
+                  <td><div class="sk" style="height:16px;width:120px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:100px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:130px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:80px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:60px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:40px">&nbsp;</div></td>
+                </tr>
+                <?php endfor; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Clientes recientes -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">
+              <i class="fas fa-users" style="color:#0057B7;margin-right:8px"></i>
+              Clientes recientes
+            </span>
+            <a href="/admin/clientes" class="btn btn-ghost btn-sm">Ver todos</a>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Plan</th>
+                  <th>Licencia</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="clientesTbody">
+                <?php for($i=0;$i<4;$i++): ?>
+                <tr>
+                  <td><div class="sk" style="height:16px;width:140px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:80px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:100px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:60px">&nbsp;</div></td>
+                  <td><div class="sk" style="height:16px;width:50px">&nbsp;</div></td>
+                </tr>
+                <?php endfor; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /mainGrid -->
+    </div><!-- /app-content -->
+
+  </main>
+
+  <!-- ═══ BOTTOM NAV MOBILE (Admin) ══════════════════════════ -->
+  <nav class="app-bottom-nav" aria-label="Navegación móvil admin">
+    <a href="/admin/dashboard"      class="bottom-nav-item active">
+      <i class="fas fa-chart-line"></i><span>Dashboard</span>
+    </a>
+    <a href="/admin/comunicaciones" class="bottom-nav-item">
+      <i class="fas fa-comments"></i><span>Chat</span>
+      <span class="nav-badge" id="bnav-comm" style="display:none"></span>
+    </a>
+    <a href="/admin/clientes"       class="bottom-nav-item">
+      <i class="fas fa-users"></i><span>Clientes</span>
+    </a>
+    <a href="/admin/mensajes"       class="bottom-nav-item">
+      <i class="fas fa-envelope"></i><span>Mensajes</span>
+      <span class="nav-badge" id="bnav-msg" style="display:none"></span>
+    </a>
+    <a href="/admin/configuracion"  class="bottom-nav-item">
+      <i class="fas fa-cogs"></i><span>Config</span>
+    </a>
+  </nav>
+
+</div><!-- /app-layout -->
+
+<?php require_once __DIR__ . '/../../views/partials/foot.php'; ?>
