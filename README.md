@@ -591,14 +591,20 @@ crisamex-web/
 
 <br/>
 
-## 📊 Stats
-
+## - Sitio Web -
+https://crisamex-web-production.up.railway.app/portal/login
 <br/>
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=EMMANUELVELASQUEZ&show_icons=true&theme=github_dark&bg_color=0D1117&border_color=C8151B&title_color=C8151B&text_color=FFFFFF&icon_color=C8151B" width="49%"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=EMMANUELVELASQUEZ&layout=compact&theme=github_dark&bg_color=0D1117&border_color=C8151B&title_color=C8151B&text_color=FFFFFF" width="42%"/>
+<img width="1894" height="955" alt="Captura de pantalla 2026-05-28 a la(s) 12 15 05 a m" src="https://github.com/user-attachments/assets/fcee83e6-e1cb-4b2c-b18e-cb47be72b0a9" />
+<img width="1894" height="955" alt="Captura de pantalla 2026-05-28 a la(s) 12 15 31 a m" src="https://github.com/user-attachments/assets/14df3531-cf51-4701-aecc-d71f72c7625f" />
+<img width="1894" height="955" alt="Captura de pantalla 2026-05-28 a la(s) 12 16 03 a m" src="https://github.com/user-attachments/assets/aa14f76f-3340-4d71-89b1-bb6e7c4c322a" />
+<img width="1894" height="955" alt="Captura de pantalla 2026-05-28 a la(s) 12 16 58 a m" src="https://github.com/user-attachments/assets/e9c2d555-685e-46fe-b7e4-0d4eee570629" />
+<img width="1894" height="955" alt="Captura de pantalla 2026-05-28 a la(s) 12 17 27 a m" src="https://github.com/user-attachments/assets/9ebdb551-0453-457e-9e96-366ffcc04934" />
+
+
+
 
 </div>
 
