@@ -614,7 +614,7 @@ https://crisamex-web-production.up.railway.app/portal/login
 
 <br/>
 
-## 👨‍💻 Autor
+## - Autor - EmasterDev
 
 <br/>
 
