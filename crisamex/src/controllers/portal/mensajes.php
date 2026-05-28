@@ -16,107 +16,554 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 }
 
 Database::query("UPDATE portal_mensajes SET leido_cliente=1 WHERE cliente_id=? AND de='admin'",[$cid]);
-$msgs = Database::fetchAll("SELECT * FROM portal_mensajes WHERE cliente_id=? ORDER BY created_at ASC",[$cid]);
+$msgs    = Database::fetchAll("SELECT * FROM portal_mensajes WHERE cliente_id=? ORDER BY created_at ASC",[$cid]);
 $cliente = Database::fetchOne("SELECT nombre FROM clientes WHERE id=?",[$cid]);
 
 require_once SRC_PATH.'/views/portal/layout-top.php';
 ?>
 
+<style>
+/* ── CHAT LAYOUT COMPLETO ─────────────────────────────────── */
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - var(--portal-top-h, 60px));
+  max-height: calc(100svh - var(--portal-top-h, 60px));
+  overflow: hidden;
+  gap: 0;
+}
+
+/* Desktop: 2 columnas */
+@media (min-width: 768px) {
+  .chat-page {
+    flex-direction: row;
+    align-items: stretch;
+    height: calc(100vh - 110px);
+  }
+}
+
+/* ── CHAT PRINCIPAL ───────────────────────────────────────── */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  min-height: 0; /* crucial para flex */
+}
+@media (max-width: 767px) {
+  .chat-main {
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
+    height: 100%;
+  }
+}
+
+/* Header del chat */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #F1F5F9;
+  background: #fff;
+  flex-shrink: 0;
+  gap: 12px;
+}
+.chat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.chat-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #003087, #C8151B);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 16px; font-weight: 800;
+  flex-shrink: 0;
+}
+.chat-header-info h2 {
+  font-size: 15px; font-weight: 700;
+  color: #1E293B; margin: 0 0 2px;
+}
+.chat-header-info .online {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: #16A34A; font-weight: 600;
+}
+.chat-header-info .online::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: #22C55E; border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%,100%{ opacity:1; } 50%{ opacity:.4; }
+}
+
+/* Área de mensajes */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #F8FAFC;
+  min-height: 0;
+  scroll-behavior: smooth;
+}
+
+/* Separador de fecha */
+.chat-date-sep {
+  text-align: center;
+  margin: 8px 0;
+  flex-shrink: 0;
+}
+.chat-date-sep span {
+  background: #E2E8F0;
+  color: #94A3B8;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .8px; text-transform: uppercase;
+  padding: 3px 12px; border-radius: 12px;
+}
+
+/* Burbuja de mensaje */
+.chat-bubble-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 78%;
+  flex-shrink: 0;
+}
+.chat-bubble-wrap.mine  { align-self: flex-end; align-items: flex-end; }
+.chat-bubble-wrap.theirs{ align-self: flex-start; align-items: flex-start; }
+
+.chat-bubble-meta {
+  font-size: 11px; color: #94A3B8;
+  margin-bottom: 4px; font-weight: 500;
+  display: flex; align-items: center; gap: 4px;
+}
+
+.chat-bubble {
+  padding: 10px 14px;
+  font-size: 14px; line-height: 1.55;
+  word-break: break-word;
+  max-width: 100%;
+}
+.chat-bubble-wrap.mine .chat-bubble {
+  background: #C8151B; color: #fff;
+  border-radius: 16px 16px 4px 16px;
+  box-shadow: 0 2px 8px rgba(200,21,27,.25);
+}
+.chat-bubble-wrap.theirs .chat-bubble {
+  background: #fff; color: #1E293B;
+  border-radius: 16px 16px 16px 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border: 1px solid #F1F5F9;
+}
+
+/* Empty state */
+.chat-empty {
+  flex: 1; display: flex;
+  flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 20px; text-align: center;
+  color: #94A3B8;
+}
+.chat-empty i     { font-size: 48px; margin-bottom: 16px; opacity: .3; }
+.chat-empty h3    { font-size: 16px; font-weight: 700; color: #64748B; margin-bottom: 6px; }
+.chat-empty p     { font-size: 14px; max-width: 240px; line-height: 1.6; }
+
+/* Input del chat */
+.chat-input-bar {
+  padding: 12px 14px;
+  border-top: 1px solid #F1F5F9;
+  background: #fff;
+  flex-shrink: 0;
+  padding-bottom: max(12px, calc(12px + env(safe-area-inset-bottom, 0px)));
+}
+.chat-input-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 24px;
+  padding: 8px 8px 8px 16px;
+  transition: border-color .2s;
+}
+.chat-input-wrap:focus-within {
+  border-color: #C8151B;
+  box-shadow: 0 0 0 3px rgba(200,21,27,.08);
+}
+.chat-input-wrap textarea {
+  flex: 1; border: none; background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px; /* 16px evita zoom iOS */
+  color: #1E293B; resize: none;
+  min-height: 28px; max-height: 100px;
+  outline: none; padding: 2px 0;
+  line-height: 1.5;
+  -webkit-appearance: none;
+}
+.chat-input-wrap textarea::placeholder { color: #94A3B8; }
+.chat-send-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%; border: none;
+  background: #C8151B; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; cursor: pointer; flex-shrink: 0;
+  transition: all .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.chat-send-btn:hover  { background: #9B0F13; transform: scale(1.08); }
+.chat-send-btn:active { transform: scale(.93); }
+.chat-hint {
+  font-size: 11px; color: #CBD5E1;
+  text-align: center; margin-top: 6px;
+}
+
+/* ── PANEL LATERAL ────────────────────────────────────────── */
+.chat-sidebar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .chat-sidebar {
+    width: 300px;
+    margin-left: 14px;
+    overflow-y: auto;
+  }
+}
+/* Mobile: panel colapsable */
+@media (max-width: 767px) {
+  .chat-sidebar {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    padding: 0;
+  }
+  .chat-sidebar.expanded {
+    max-height: 400px;
+    padding-top: 12px;
+  }
+  .chat-page {
+    padding-bottom: 0;
+  }
+}
+
+/* Botón toggle info en mobile */
+.chat-info-toggle {
+  display: none;
+  width: 100%;
+  padding: 10px 16px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  font-size: 13px; font-weight: 600;
+  color: #64748B; text-align: center;
+  cursor: pointer; margin-top: 10px;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .18s;
+}
+.chat-info-toggle:active { background: #E2E8F0; }
+@media (max-width: 767px) {
+  .chat-info-toggle { display: block; }
+}
+
+/* Cards del sidebar */
+.chat-info-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  overflow: hidden;
+}
+.chat-info-card .cic-head {
+  padding: 14px 16px;
+  border-bottom: 1px solid #F1F5F9;
+  font-size: 13px; font-weight: 700;
+  color: #1E293B;
+  display: flex; align-items: center; gap: 8px;
+}
+.chat-info-card .cic-head i { color: #64748B; font-size: 13px; }
+.chat-info-card .cic-body { padding: 14px 16px; }
+
+/* Botones de contacto */
+.contact-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none;
+  transition: all .18s; margin-bottom: 8px;
+  min-height: 46px;
+  -webkit-tap-highlight-color: transparent;
+  border: 1px solid transparent;
+}
+.contact-btn:last-child { margin-bottom: 0; }
+.contact-btn:active { transform: scale(.97); }
+.contact-btn.phone {
+  background: rgba(200,21,27,.06);
+  border-color: rgba(200,21,27,.2);
+  color: #C8151B;
+}
+.contact-btn.phone:hover { background: #C8151B; color: #fff; }
+.contact-btn.whatsapp {
+  background: rgba(37,211,102,.07);
+  border-color: rgba(37,211,102,.2);
+  color: #16A34A;
+}
+.contact-btn.whatsapp:hover { background: #25D366; color: #fff; }
+.contact-btn.email {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+  color: #64748B;
+}
+.contact-btn.email:hover { background: #E2E8F0; }
+
+/* Horario */
+.horario-row {
+  display: flex; justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid #F8FAFC;
+  font-size: 13px;
+}
+.horario-row:last-child { border-bottom: none; padding-bottom: 0; }
+.horario-row .dia  { color: #64748B; font-weight: 500; }
+.horario-row .hora { color: #1E293B; font-weight: 600; font-size: 12px; }
+.horario-row .cerrado { color: #C8151B; font-weight: 600; font-size: 12px; }
+
+/* Alert success */
+.aa-ok {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; border-radius: 10px;
+  background: #DCFCE7; color: #16A34A;
+  font-size: 14px; font-weight: 600;
+  margin-bottom: 14px; flex-shrink: 0;
+  border: 1px solid rgba(22,163,74,.2);
+}
+</style>
+
 <?php if(isset($_GET['ok'])): ?>
-<div class="aa aa-ok" style="margin-bottom:16px;"><i class="fas fa-check-circle"></i> Mensaje enviado. Te responderemos pronto.</div>
+<div class="aa-ok"><i class="fas fa-check-circle"></i> Mensaje enviado correctamente. Te responderemos pronto.</div>
 <?php endif; ?>
 
-<div style="display:grid;grid-template-columns:1fr 340px;gap:16px;height:calc(100vh - 150px);">
+<div class="chat-page">
 
-  <!-- CHAT -->
-  <div class="ac" style="margin:0;display:flex;flex-direction:column;overflow:hidden;">
-    <div class="ac-head" style="flex-shrink:0;">
-      <h2><i class="fas fa-comments"></i> Conversación con CRISAMEX</h2>
-      <div style="display:flex;align-items:center;gap:6px;font-size:.76rem;color:#16a34a;font-weight:600;">
-        <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block;"></span>
-        En línea
+  <!-- ═══ CHAT PRINCIPAL ═════════════════════════════════════ -->
+  <div class="chat-main">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">C</div>
+        <div class="chat-header-info">
+          <h2>CRISAMEX</h2>
+          <div class="online">En línea</div>
+        </div>
       </div>
+      <!-- Botón info en mobile (abre panel) -->
+      <button class="chat-info-toggle" id="toggleInfo" onclick="toggleSidebar()" style="width:auto;margin:0;padding:8px 14px;display:none" aria-label="Ver información">
+        <i class="fas fa-info-circle"></i>
+      </button>
+      <style>
+        @media(max-width:767px){
+          button#toggleInfo{ display:inline-flex!important; align-items:center; gap:6px; font-size:13px; }
+        }
+      </style>
     </div>
 
     <!-- Mensajes -->
-    <div id="chat-box" style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px;background:#f8f9fa;">
+    <div class="chat-messages" id="chat-box">
+
       <?php if(empty($msgs)): ?>
-      <div style="text-align:center;padding:40px;color:var(--txt3);">
-        <i class="fas fa-comment-dots" style="font-size:3rem;display:block;margin-bottom:14px;color:#e0e0e0;"></i>
-        <p style="font-size:.9rem;">Sin mensajes aún. ¡Escríbenos y te ayudamos!</p>
+      <div class="chat-empty">
+        <i class="fas fa-comment-dots"></i>
+        <h3>Sin mensajes aún</h3>
+        <p>Escríbenos y te responderemos en menos de 24 horas hábiles.</p>
       </div>
       <?php else:
         $lastDate = '';
         foreach($msgs as $m):
-          $mDate = date('d/m/Y',strtotime($m['created_at']));
-          $mTime = date('H:i',strtotime($m['created_at']));
-          $mio = $m['de']==='cliente';
+          $mDate = date('d/m/Y', strtotime($m['created_at']));
+          $mTime = date('H:i',   strtotime($m['created_at']));
+          $mine  = $m['de'] === 'cliente';
+
           if($mDate !== $lastDate):
             $lastDate = $mDate;
-            $lbl = $mDate===date('d/m/Y')?'Hoy':($mDate===date('d/m/Y',strtotime('-1 day'))?'Ayer':$mDate);
+            $lbl = ($mDate === date('d/m/Y')) ? 'Hoy'
+                 : ($mDate === date('d/m/Y', strtotime('-1 day')) ? 'Ayer' : $mDate);
       ?>
-        <div style="text-align:center;font-size:.7rem;color:#bbb;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin:6px 0;">
-          <span style="background:#e8e8e8;padding:3px 12px;border-radius:12px;"><?= $lbl ?></span>
+        <div class="chat-date-sep">
+          <span><?= htmlspecialchars($lbl, ENT_QUOTES, 'UTF-8') ?></span>
         </div>
       <?php endif; ?>
-        <div style="display:flex;flex-direction:column;align-items:<?= $mio?'flex-end':'flex-start' ?>;max-width:75%;<?= $mio?'align-self:flex-end':'align-self:flex-start' ?>;">
-          <div style="font-size:.68rem;color:#bbb;margin-bottom:4px;"><?= $mio?'Tú':'CRISAMEX' ?> · <?= $mTime ?></div>
-          <div style="padding:10px 14px;border-radius:<?= $mio?'12px 12px 2px 12px':'12px 12px 12px 2px' ?>;font-size:.88rem;line-height:1.55;word-break:break-word;<?= $mio?'background:#C8151B;color:#fff;':'background:#fff;color:#1a1a1a;box-shadow:0 1px 3px rgba(0,0,0,.08);' ?>">
-            <?= nl2br(htmlspecialchars($m['mensaje'])) ?>
+
+        <div class="chat-bubble-wrap <?= $mine ? 'mine' : 'theirs' ?>">
+          <div class="chat-bubble-meta">
+            <?= $mine ? 'Tú' : 'CRISAMEX' ?> · <?= $mTime ?>
+            <?php if($mine && $m['leido_admin']): ?>
+              <i class="fas fa-check-double" style="color:#60A5FA;font-size:10px;" title="Leído"></i>
+            <?php endif; ?>
+          </div>
+          <div class="chat-bubble">
+            <?= nl2br(htmlspecialchars($m['mensaje'], ENT_QUOTES, 'UTF-8')) ?>
           </div>
         </div>
+
       <?php endforeach; endif; ?>
     </div>
 
     <!-- Input -->
-    <div style="padding:14px 16px;border-top:1px solid var(--brd);background:#fff;flex-shrink:0;">
-      <form method="POST" style="display:flex;gap:10px;align-items:flex-end;">
-        <input type="hidden" name="asunto" value="Consulta del cliente">
-        <textarea name="mensaje" id="msg-ta" placeholder="Escribe tu mensaje..." required
-          style="flex:1;padding:10px 14px;border:1.5px solid #e8e8e8;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:.9rem;resize:none;min-height:44px;max-height:110px;outline:none;background:#f8f8f8;"
-          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();this.form.submit();}"></textarea>
-        <button type="submit" style="width:44px;height:44px;border-radius:50%;background:#C8151B;border:none;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;" onmouseover="this.style.background='#9a1015'" onmouseout="this.style.background='#C8151B'">
+    <form method="POST" class="chat-input-bar" id="chatForm">
+      <input type="hidden" name="asunto" value="Consulta del cliente">
+      <div class="chat-input-wrap">
+        <textarea
+          name="mensaje"
+          id="msg-ta"
+          placeholder="Escribe tu mensaje..."
+          required
+          rows="1"
+          aria-label="Escribe tu mensaje"></textarea>
+        <button type="submit" class="chat-send-btn" aria-label="Enviar">
           <i class="fas fa-paper-plane"></i>
         </button>
-      </form>
-      <div style="font-size:.7rem;color:#bbb;text-align:center;margin-top:6px;">Enter para enviar · Shift+Enter para nueva línea</div>
-    </div>
-  </div>
+      </div>
+      <div class="chat-hint">Enter para enviar &nbsp;·&nbsp; Shift+Enter para nueva línea</div>
+    </form>
 
-  <!-- INFO LATERAL -->
-  <div style="display:flex;flex-direction:column;gap:14px;">
-    <div class="ac" style="margin:0;">
-      <div class="ac-head"><h2><i class="fas fa-headset"></i> Soporte CRISAMEX</h2></div>
-      <div class="ac-body">
-        <p style="font-size:.84rem;color:var(--txt3);margin-bottom:16px;line-height:1.6;">Respondemos en menos de 24 horas hábiles. También puedes contactarnos directamente:</p>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="tel:+525556508420" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(200,21,27,.06);border:1px solid rgba(200,21,27,.15);border-radius:6px;text-decoration:none;color:#C8151B;font-size:.84rem;font-weight:600;transition:all .2s;" onmouseover="this.style.background='#C8151B';this.style.color='#fff'" onmouseout="this.style.background='rgba(200,21,27,.06)';this.style.color='#C8151B'">
-            <i class="fas fa-phone-alt"></i> 01 55 5650 8420
-          </a>
-          <a href="https://wa.me/525556508420" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:6px;text-decoration:none;color:#16a34a;font-size:.84rem;font-weight:600;transition:all .2s;" onmouseover="this.style.background='#25D366';this.style.color='#fff'" onmouseout="this.style.background='rgba(37,211,102,.08)';this.style.color='#16a34a'">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-          </a>
-          <a href="mailto:contacto@crisamex.com" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f8f8f8;border:1px solid #e8e8e8;border-radius:6px;text-decoration:none;color:var(--txt2);font-size:.84rem;font-weight:600;">
-            <i class="fas fa-envelope"></i> contacto@crisamex.com
-          </a>
+  </div><!-- /chat-main -->
+
+  <!-- ═══ PANEL LATERAL ══════════════════════════════════════ -->
+  <div class="chat-sidebar" id="chatSidebar">
+
+    <!-- Soporte -->
+    <div class="chat-info-card">
+      <div class="cic-head"><i class="fas fa-headset"></i> Soporte CRISAMEX</div>
+      <div class="cic-body">
+        <p style="font-size:13px;color:#64748B;margin-bottom:12px;line-height:1.6;">
+          Respondemos en menos de 24 horas hábiles. También puedes contactarnos directamente:
+        </p>
+        <a href="tel:+525556508420" class="contact-btn phone">
+          <i class="fas fa-phone-alt"></i>
+          55 5650 8420
+        </a>
+        <a href="https://wa.me/525556508420" target="_blank" rel="noopener" class="contact-btn whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+        </a>
+        <a href="mailto:contacto@crisamex.com" class="contact-btn email">
+          <i class="fas fa-envelope"></i>
+          contacto@crisamex.com
+        </a>
+      </div>
+    </div>
+
+    <!-- Horario -->
+    <div class="chat-info-card">
+      <div class="cic-head"><i class="fas fa-clock"></i> Horario de atención</div>
+      <div class="cic-body">
+        <div class="horario-row">
+          <span class="dia">Lun – Vie</span>
+          <span class="hora">9:00 AM – 6:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="dia">Sábado</span>
+          <span class="hora">9:00 AM – 1:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="dia">Domingo</span>
+          <span class="cerrado">Cerrado</span>
         </div>
       </div>
     </div>
-    <div class="ac" style="margin:0;">
-      <div class="ac-head"><h2><i class="fas fa-clock"></i> Horario</h2></div>
-      <div class="ac-body" style="font-size:.83rem;color:var(--txt3);line-height:1.9;">
-        <div><strong style="color:var(--txt);">Lun – Vie:</strong> 9:00 AM – 6:00 PM</div>
-        <div><strong style="color:var(--txt);">Sábado:</strong> 9:00 AM – 1:00 PM</div>
-        <div><strong style="color:var(--txt);">Domingo:</strong> Cerrado</div>
+
+    <!-- Total mensajes -->
+    <?php $total = count($msgs); if($total > 0): ?>
+    <div class="chat-info-card">
+      <div class="cic-body" style="display:flex;align-items:center;gap:12px;">
+        <div style="width:42px;height:42px;border-radius:10px;background:#EEF4FC;display:flex;align-items:center;justify-content:center;font-size:18px;color:#0057B7;flex-shrink:0;">
+          <i class="fas fa-comments"></i>
+        </div>
+        <div>
+          <div style="font-size:22px;font-weight:800;color:#1E293B;line-height:1;"><?= $total ?></div>
+          <div style="font-size:12px;color:#64748B;margin-top:2px;">mensajes en total</div>
+        </div>
       </div>
     </div>
-  </div>
+    <?php endif; ?>
 
-</div>
+  </div><!-- /chat-sidebar -->
+
+  <!-- Toggle info mobile (fuera del sidebar) -->
+  <button class="chat-info-toggle" id="toggleInfo2" onclick="toggleSidebar()">
+    <i class="fas fa-chevron-down" id="toggleIcon"></i>
+    Información de contacto
+  </button>
+
+</div><!-- /chat-page -->
 
 <script>
-var box = document.getElementById('chat-box');
-if(box) box.scrollTop = box.scrollHeight;
+(function(){
+
+  /* ── Scroll al fondo ──────────────────────────────────── */
+  var box = document.getElementById('chat-box');
+  if(box) box.scrollTop = box.scrollHeight;
+
+  /* ── Auto-resize textarea ─────────────────────────────── */
+  var ta = document.getElementById('msg-ta');
+  if(ta){
+    ta.addEventListener('input', function(){
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+    });
+
+    /* Enter envía, Shift+Enter nueva línea */
+    ta.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && !e.shiftKey){
+        e.preventDefault();
+        var form = document.getElementById('chatForm');
+        if(form && this.value.trim()) form.submit();
+      }
+    });
+
+    /* Focus en desktop */
+    if(window.innerWidth >= 768) ta.focus();
+  }
+
+  /* ── Toggle panel info en mobile ─────────────────────── */
+  window.toggleSidebar = function(){
+    var sb   = document.getElementById('chatSidebar');
+    var icon = document.getElementById('toggleIcon');
+    var btn2 = document.getElementById('toggleInfo2');
+    if(!sb) return;
+    var open = sb.classList.toggle('expanded');
+    if(icon) icon.className = open ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
+    if(btn2) btn2.querySelector('span') && (btn2.lastChild.textContent = open ? ' Ocultar' : ' Información de contacto');
+  };
+
+  /* ── Envío con loading state ──────────────────────────── */
+  var form = document.getElementById('chatForm');
+  if(form){
+    form.addEventListener('submit', function(){
+      var btn = this.querySelector('.chat-send-btn');
+      if(btn){
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+      }
+    });
+  }
+
+})();
 </script>
 
 <?php require_once SRC_PATH.'/views/portal/layout-bottom.php'; ?>
