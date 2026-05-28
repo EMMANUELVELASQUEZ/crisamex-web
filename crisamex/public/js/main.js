@@ -795,3 +795,283 @@ else init();
 
 })();
 /* ── FIN CRISAMEX Portal & Admin JS v3.0 ─────────────────────── */
+/* ================================================================
+   CRISAMEX — Portal & Admin JS v3.0
+   Agregar al final de: crisamex/public/js/main.js
+   ================================================================ */
+(function(){
+'use strict';
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const isMobile = () => window.innerWidth < 1024;
+
+/* ── 1. SIDEBAR DRAWER ─────────────────────────────────────── */
+function initSidebar(){
+  const sidebar  = $('.app-sidebar');
+  const overlay  = $('.sidebar-overlay');
+  const openBtns = $$('.topbar-menu-btn, .sidebar-toggle');
+  if(!sidebar) return;
+
+  const open  = ()=>{ sidebar.classList.add('open');    overlay&&overlay.classList.add('active');    document.body.style.overflow='hidden'; };
+  const close = ()=>{ sidebar.classList.remove('open'); overlay&&overlay.classList.remove('active'); document.body.style.overflow=''; };
+
+  openBtns.forEach(b=>b.addEventListener('click',()=>sidebar.classList.contains('open')?close():open()));
+  overlay&&overlay.addEventListener('click', close);
+
+  // Cerrar al navegar (mobile)
+  $$('.sidebar-link', sidebar).forEach(link=>{
+    link.addEventListener('click',()=>{ if(isMobile()) close(); });
+  });
+
+  // Swipe derecha → izquierda para cerrar
+  let startX=0;
+  sidebar.addEventListener('touchstart',e=>{ startX=e.touches[0].clientX; },{passive:true});
+  sidebar.addEventListener('touchend',e=>{
+    if(startX - e.changedTouches[0].clientX > 60) close();
+  },{passive:true});
+
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+}
+
+/* ── 2. BOTTOM NAVIGATION ACTIVO ──────────────────────────── */
+function initBottomNav(){
+  const nav = $('.app-bottom-nav');
+  if(!nav) return;
+  const path = location.pathname;
+  $$('.bottom-nav-item',nav).forEach(item=>{
+    const href = item.getAttribute('href')||'';
+    if(href && path.includes(href)) item.classList.add('active');
+    item.addEventListener('touchstart',()=>{
+      item.style.transform='scale(0.88)'; item.style.transition='transform .1s';
+    },{passive:true});
+    item.addEventListener('touchend',()=>{ item.style.transform=''; },{passive:true});
+  });
+}
+
+/* ── 3. CHAT ───────────────────────────────────────────────── */
+function initChat(){
+  const layout   = $('.chat-layout');
+  if(!layout) return;
+
+  const list     = $('.chat-list');
+  const thread   = $('.chat-thread');
+  const backBtn  = $('.chat-back-btn');
+  const textarea = $('.chat-input-area textarea');
+  const sendBtn  = $('.chat-send-btn');
+  const messages = $('.chat-messages');
+
+  // Mobile: mostrar lista primero, thread al seleccionar
+  function showThread(){
+    if(isMobile()){
+      list&&list.classList.add('hidden');
+      thread&&thread.classList.remove('hidden');
+    }
+  }
+  function showList(){
+    if(isMobile()){
+      list&&list.classList.remove('hidden');
+      thread&&thread.classList.add('hidden');
+    }
+  }
+
+  $$('.chat-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      $$('.chat-item').forEach(i=>i.classList.remove('active'));
+      item.classList.add('active');
+      item.querySelector('.chat-item-badge')?.remove();
+      showThread();
+    });
+  });
+
+  backBtn&&backBtn.addEventListener('click', showList);
+
+  // Auto-resize textarea
+  if(textarea){
+    textarea.addEventListener('input',()=>{
+      textarea.style.height='auto';
+      textarea.style.height = Math.min(textarea.scrollHeight, 120)+'px';
+    });
+    // Enter envía (Shift+Enter = nueva línea)
+    textarea.addEventListener('keydown',e=>{
+      if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMsg(); }
+    });
+  }
+
+  // Enviar mensaje
+  function sendMsg(){
+    if(!textarea||!textarea.value.trim()) return;
+    const text = textarea.value.trim();
+    textarea.value=''; textarea.style.height='auto';
+    if(!messages) return;
+    const now = new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
+    const bubble = document.createElement('div');
+    bubble.className='msg-bubble sent animate-up';
+    bubble.innerHTML=`
+      <div class="msg-content">
+        <div class="msg-text">${escHtml(text)}</div>
+        <div class="msg-meta">${now}</div>
+      </div>`;
+    messages.appendChild(bubble);
+    messages.scrollTo({top:messages.scrollHeight,behavior:'smooth'});
+  }
+
+  sendBtn&&sendBtn.addEventListener('click', sendMsg);
+
+  // Scroll al fondo al cargar
+  if(messages) messages.scrollTop = messages.scrollHeight;
+}
+
+/* ── 4. TOPBAR — HIDE ON SCROLL DOWN ───────────────────────── */
+function initTopbar(){
+  const topbar = $('.app-topbar');
+  if(!topbar||!isMobile()) return;
+  let lastY=0, ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      requestAnimationFrame(()=>{
+        const y = window.scrollY;
+        topbar.style.transition='transform .25s ease';
+        if(y>lastY+8 && y>60) topbar.style.transform='translateY(-100%)';
+        else if(y<lastY-5||y<60) topbar.style.transform='translateY(0)';
+        lastY=y; ticking=false;
+      });
+      ticking=true;
+    }
+  },{passive:true});
+}
+
+/* ── 5. MODALES (bottom sheet en mobile) ───────────────────── */
+function initModals(){
+  $$('[data-modal]').forEach(btn=>{
+    const id = btn.dataset.modal;
+    const modal = document.getElementById(id);
+    if(!modal) return;
+    btn.addEventListener('click',()=>{
+      modal.style.display='flex';
+      requestAnimationFrame(()=>modal.classList.add('open'));
+      document.body.style.overflow='hidden';
+    });
+    modal.addEventListener('click',e=>{
+      if(e.target===modal) closeModal(modal);
+    });
+    modal.querySelector('[data-close]')?.addEventListener('click',()=>closeModal(modal));
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape') $$('.modal.open').forEach(closeModal);
+  });
+  function closeModal(m){
+    m.classList.remove('open');
+    setTimeout(()=>{ m.style.display='none'; document.body.style.overflow=''; },250);
+  }
+}
+
+/* ── 6. FORMULARIOS — feedback visual ─────────────────────── */
+function initForms(){
+  // Auto-focus primer campo en desktop
+  if(!isMobile()){
+    const first = $('input:not([type=hidden]):not([type=checkbox])');
+    first&&first.focus();
+  }
+
+  // Toggle password visibility
+  $$('.toggle-pwd').forEach(btn=>{
+    const input = btn.previousElementSibling||btn.closest('.field-input')?.querySelector('input');
+    if(!input) return;
+    btn.addEventListener('click',()=>{
+      const isText = input.type==='text';
+      input.type = isText?'password':'text';
+      btn.className = `toggle-pwd fas fa-eye${isText?'':'-slash'}`;
+    });
+  });
+
+  // Plan selector
+  $$('.plan-opt').forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      $$('.plan-opt').forEach(o=>o.classList.remove('selected'));
+      opt.classList.add('selected');
+      const radio = opt.querySelector('input[type=radio]');
+      if(radio) radio.checked=true;
+    });
+  });
+
+  // Submit con loading state
+  $$('form').forEach(form=>{
+    form.addEventListener('submit',()=>{
+      const btn = form.querySelector('[type=submit]');
+      if(btn){
+        btn.disabled=true;
+        btn.innerHTML=`<i class="fas fa-spinner fa-spin"></i>&nbsp;Procesando...`;
+      }
+    });
+  });
+}
+
+/* ── 7. TABLAS — selección y acciones ─────────────────────── */
+function initTables(){
+  const checkAll = $('[data-check-all]');
+  if(checkAll){
+    checkAll.addEventListener('change',()=>{
+      $$('[data-check-row]').forEach(cb=>{ cb.checked=checkAll.checked; });
+      updateBulkActions();
+    });
+    $$('[data-check-row]').forEach(cb=>{
+      cb.addEventListener('change', updateBulkActions);
+    });
+  }
+  function updateBulkActions(){
+    const selected = $$('[data-check-row]:checked').length;
+    const bar = $('.bulk-actions');
+    if(bar) bar.style.display = selected>0?'flex':'none';
+    const count = $('.bulk-count');
+    if(count) count.textContent=`${selected} seleccionados`;
+  }
+}
+
+/* ── 8. NOTIFICACIONES — marcar como leída ─────────────────── */
+function initNotifications(){
+  $$('.notif-item.unread').forEach(item=>{
+    item.addEventListener('click',()=>{
+      item.classList.remove('unread');
+      const dot = $('.topbar-icon-btn .dot');
+      const unreadCount = $$('.notif-item.unread').length;
+      if(dot && unreadCount===0) dot.style.display='none';
+    });
+  });
+}
+
+/* ── 9. RESIZE ─────────────────────────────────────────────── */
+window.addEventListener('resize',()=>{
+  if(!isMobile()){
+    const sidebar = $('.app-sidebar');
+    const overlay = $('.sidebar-overlay');
+    sidebar&&sidebar.classList.remove('open');
+    overlay&&overlay.classList.remove('active');
+    document.body.style.overflow='';
+  }
+});
+
+/* ── UTILS ──────────────────────────────────────────────────── */
+function escHtml(t){
+  const d=document.createElement('div');
+  d.appendChild(document.createTextNode(t));
+  return d.innerHTML;
+}
+
+/* ── INIT ───────────────────────────────────────────────────── */
+function init(){
+  initSidebar();
+  initBottomNav();
+  initChat();
+  initTopbar();
+  initModals();
+  initForms();
+  initTables();
+  initNotifications();
+}
+
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+else init();
+
+})();
+/* ── FIN CRISAMEX Portal & Admin JS v3.0 ─────────────────────── */
